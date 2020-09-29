@@ -1,0 +1,15 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import CalendarLocale from '../calendar/uk_UA';
+import TimePickerLocale from '../time-picker/uk_UA';
+/** @type {?} */
+const locale = {
+    lang: Object.assign({ placeholder: 'Оберіть дату', rangePlaceholder: ['Початкова дата', 'Кінцева дата'] }, CalendarLocale),
+    timePickerLocale: Object.assign({}, TimePickerLocale),
+};
+// All settings at:
+// https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json
+export default locale;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidWtfVUEuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy16b3Jyby1hbnRkLyIsInNvdXJjZXMiOlsiaTE4bi9sYW5ndWFnZXMvZGF0ZS1waWNrZXIvdWtfVUEudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sY0FBYyxNQUFNLG1CQUFtQixDQUFDO0FBQy9DLE9BQU8sZ0JBQWdCLE1BQU0sc0JBQXNCLENBQUM7O01BRTlDLE1BQU0sR0FBRztJQUNiLElBQUksa0JBQ0YsV0FBVyxFQUFFLGNBQWMsRUFDM0IsZ0JBQWdCLEVBQUUsQ0FBQyxnQkFBZ0IsRUFBRSxjQUFjLENBQUMsSUFDakQsY0FBYyxDQUNsQjtJQUNELGdCQUFnQixvQkFDWCxnQkFBZ0IsQ0FDcEI7Q0FDRjs7O0FBS0QsZUFBZSxNQUFNLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgQ2FsZW5kYXJMb2NhbGUgZnJvbSAnLi4vY2FsZW5kYXIvdWtfVUEnO1xuaW1wb3J0IFRpbWVQaWNrZXJMb2NhbGUgZnJvbSAnLi4vdGltZS1waWNrZXIvdWtfVUEnO1xuXG5jb25zdCBsb2NhbGUgPSB7XG4gIGxhbmc6IHtcbiAgICBwbGFjZWhvbGRlcjogJ9Ce0LHQtdGA0ZbRgtGMINC00LDRgtGDJyxcbiAgICByYW5nZVBsYWNlaG9sZGVyOiBbJ9Cf0L7Rh9Cw0YLQutC+0LLQsCDQtNCw0YLQsCcsICfQmtGW0L3RhtC10LLQsCDQtNCw0YLQsCddLFxuICAgIC4uLkNhbGVuZGFyTG9jYWxlLFxuICB9LFxuICB0aW1lUGlja2VyTG9jYWxlOiB7XG4gICAgLi4uVGltZVBpY2tlckxvY2FsZSxcbiAgfSxcbn07XG5cbi8vIEFsbCBzZXR0aW5ncyBhdDpcbi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbnQtZGVzaWduL2FudC1kZXNpZ24vYmxvYi9tYXN0ZXIvY29tcG9uZW50cy9kYXRlLXBpY2tlci9sb2NhbGUvZXhhbXBsZS5qc29uXG5cbmV4cG9ydCBkZWZhdWx0IGxvY2FsZTtcbiJdfQ==

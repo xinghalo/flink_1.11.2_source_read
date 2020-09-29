@@ -1,0 +1,11 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { NZ_NOTIFICATION_DEFAULT_CONFIG, NZ_NOTIFICATION_CONFIG, NZ_NOTIFICATION_DEFAULT_CONFIG_PROVIDER } from './nz-notification-config';
+export { NzNotificationComponent } from './nz-notification.component';
+export { NzNotificationModule } from './nz-notification.module';
+export {} from './nz-notification.definitions';
+export { NzNotificationService } from './nz-notification.service';
+export { NzNotificationContainerComponent } from './nz-notification-container.component';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL25nLXpvcnJvLWFudGQvIiwic291cmNlcyI6WyJub3RpZmljYXRpb24vcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsZ0hBQWMsMEJBQTBCLENBQUM7QUFDekMsd0NBQWMsNkJBQTZCLENBQUM7QUFDNUMscUNBQWMsMEJBQTBCLENBQUM7QUFDekMsZUFBYywrQkFBK0IsQ0FBQztBQUM5QyxzQ0FBYywyQkFBMkIsQ0FBQztBQUMxQyxpREFBYyx1Q0FBdUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vbnotbm90aWZpY2F0aW9uLWNvbmZpZyc7XG5leHBvcnQgKiBmcm9tICcuL256LW5vdGlmaWNhdGlvbi5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9uei1ub3RpZmljYXRpb24ubW9kdWxlJztcbmV4cG9ydCAqIGZyb20gJy4vbnotbm90aWZpY2F0aW9uLmRlZmluaXRpb25zJztcbmV4cG9ydCAqIGZyb20gJy4vbnotbm90aWZpY2F0aW9uLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi9uei1ub3RpZmljYXRpb24tY29udGFpbmVyLmNvbXBvbmVudCc7XG4iXX0=

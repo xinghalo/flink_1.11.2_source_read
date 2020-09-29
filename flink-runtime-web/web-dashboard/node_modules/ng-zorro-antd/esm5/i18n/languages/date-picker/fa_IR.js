@@ -1,0 +1,17 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import * as tslib_1 from "tslib";
+import CalendarLocale from '../calendar/fa_IR';
+import TimePickerLocale from '../time-picker/fa_IR';
+// Merge into a locale object
+/** @type {?} */
+var locale = {
+    lang: tslib_1.__assign({ placeholder: 'انتخاب تاریخ', rangePlaceholder: ['تاریخ شروع', 'تاریخ پایان'] }, CalendarLocale),
+    timePickerLocale: tslib_1.__assign({}, TimePickerLocale),
+};
+// All settings at:
+// https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json
+export default locale;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmFfSVIuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy16b3Jyby1hbnRkLyIsInNvdXJjZXMiOlsiaTE4bi9sYW5ndWFnZXMvZGF0ZS1waWNrZXIvZmFfSVIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7QUFBQSxPQUFPLGNBQWMsTUFBTSxtQkFBbUIsQ0FBQztBQUMvQyxPQUFPLGdCQUFnQixNQUFNLHNCQUFzQixDQUFDOzs7SUFHOUMsTUFBTSxHQUFHO0lBQ2IsSUFBSSxxQkFDRixXQUFXLEVBQUUsY0FBYyxFQUMzQixnQkFBZ0IsRUFBRSxDQUFDLFlBQVksRUFBRSxhQUFhLENBQUMsSUFDNUMsY0FBYyxDQUNsQjtJQUNELGdCQUFnQix1QkFDWCxnQkFBZ0IsQ0FDcEI7Q0FDRjs7O0FBS0QsZUFBZSxNQUFNLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgQ2FsZW5kYXJMb2NhbGUgZnJvbSAnLi4vY2FsZW5kYXIvZmFfSVInO1xuaW1wb3J0IFRpbWVQaWNrZXJMb2NhbGUgZnJvbSAnLi4vdGltZS1waWNrZXIvZmFfSVInO1xuXG4vLyBNZXJnZSBpbnRvIGEgbG9jYWxlIG9iamVjdFxuY29uc3QgbG9jYWxlID0ge1xuICBsYW5nOiB7XG4gICAgcGxhY2Vob2xkZXI6ICfYp9mG2KrYrtin2Kgg2KrYp9ix24zYricsXG4gICAgcmFuZ2VQbGFjZWhvbGRlcjogWyfYqtin2LHbjNiuINi02LHZiNi5JywgJ9iq2KfYsduM2K4g2b7Yp9uM2KfZhiddLFxuICAgIC4uLkNhbGVuZGFyTG9jYWxlLFxuICB9LFxuICB0aW1lUGlja2VyTG9jYWxlOiB7XG4gICAgLi4uVGltZVBpY2tlckxvY2FsZSxcbiAgfSxcbn07XG5cbi8vIEFsbCBzZXR0aW5ncyBhdDpcbi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbnQtZGVzaWduL2FudC1kZXNpZ24vYmxvYi9tYXN0ZXIvY29tcG9uZW50cy9kYXRlLXBpY2tlci9sb2NhbGUvZXhhbXBsZS5qc29uXG5cbmV4cG9ydCBkZWZhdWx0IGxvY2FsZTtcbiJdfQ==

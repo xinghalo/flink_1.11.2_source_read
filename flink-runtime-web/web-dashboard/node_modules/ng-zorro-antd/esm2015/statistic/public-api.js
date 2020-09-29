@@ -1,0 +1,8 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { NzCountdownComponent } from './nz-countdown.component';
+export { NzStatisticComponent } from './nz-statistic.component';
+export { NzStatisticModule } from './nz-statistic.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL25nLXpvcnJvLWFudGQvIiwic291cmNlcyI6WyJzdGF0aXN0aWMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEscUNBQWMsMEJBQTBCLENBQUM7QUFDekMscUNBQWMsMEJBQTBCLENBQUM7QUFDekMsa0NBQWMsdUJBQXVCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tICcuL256LWNvdW50ZG93bi5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9uei1zdGF0aXN0aWMuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vbnotc3RhdGlzdGljLm1vZHVsZSc7XG4iXX0=

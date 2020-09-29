@@ -1,0 +1,10 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { NzAutocompleteModule } from './nz-autocomplete.module';
+export { NzAutocompleteComponent } from './nz-autocomplete.component';
+export { getNzAutocompleteMissingPanelError, NZ_AUTOCOMPLETE_VALUE_ACCESSOR, NzAutocompleteTriggerDirective } from './nz-autocomplete-trigger.directive';
+export { NzOptionSelectionChange, NzAutocompleteOptionComponent } from './nz-autocomplete-option.component';
+export { NzAutocompleteOptgroupComponent } from './nz-autocomplete-optgroup.component';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL25nLXpvcnJvLWFudGQvIiwic291cmNlcyI6WyJhdXRvLWNvbXBsZXRlL3B1YmxpYy1hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHFDQUFjLDBCQUEwQixDQUFDO0FBQ3pDLHdDQUFjLDZCQUE2QixDQUFDO0FBQzVDLG1IQUFjLHFDQUFxQyxDQUFDO0FBQ3BELHVFQUFjLG9DQUFvQyxDQUFDO0FBQ25ELGdEQUFjLHNDQUFzQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9uei1hdXRvY29tcGxldGUubW9kdWxlJztcbmV4cG9ydCAqIGZyb20gJy4vbnotYXV0b2NvbXBsZXRlLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL256LWF1dG9jb21wbGV0ZS10cmlnZ2VyLmRpcmVjdGl2ZSc7XG5leHBvcnQgKiBmcm9tICcuL256LWF1dG9jb21wbGV0ZS1vcHRpb24uY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vbnotYXV0b2NvbXBsZXRlLW9wdGdyb3VwLmNvbXBvbmVudCc7XG4iXX0=

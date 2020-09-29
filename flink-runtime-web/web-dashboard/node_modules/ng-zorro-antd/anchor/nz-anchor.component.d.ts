@@ -1,0 +1,38 @@
+import { AfterViewInit, ChangeDetectorRef, EventEmitter, OnDestroy } from '@angular/core';
+import { NzScrollService } from '../core/scroll/nz-scroll.service';
+import { NGStyleInterface } from '../core/types/ng-class';
+import { NzAnchorLinkComponent } from './nz-anchor-link.component';
+export declare class NzAnchorComponent implements OnDestroy, AfterViewInit {
+    private scrollSrv;
+    private doc;
+    private cdr;
+    private ink;
+    nzAffix: boolean;
+    nzShowInkInFixed: boolean;
+    nzBounds: number;
+    nzOffsetTop: number;
+    private _offsetTop;
+    nzTarget: string | Element;
+    readonly nzClick: EventEmitter<string>;
+    readonly nzScroll: EventEmitter<NzAnchorLinkComponent>;
+    visible: boolean;
+    wrapperStyle: NGStyleInterface;
+    private links;
+    private animating;
+    private target;
+    private scroll$;
+    private destroyed;
+    constructor(scrollSrv: NzScrollService, doc: any, cdr: ChangeDetectorRef);
+    registerLink(link: NzAnchorLinkComponent): void;
+    unregisterLink(link: NzAnchorLinkComponent): void;
+    private getTarget;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    private registerScrollEvent;
+    private removeListen;
+    private getOffsetTop;
+    handleScroll(): void;
+    private clearActive;
+    private handleActive;
+    handleScrollTo(linkComp: NzAnchorLinkComponent): void;
+}

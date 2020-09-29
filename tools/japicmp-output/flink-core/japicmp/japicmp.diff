@@ -1,0 +1,6 @@
+Comparing source compatibility of /Users/xingoo/Documents/source/flink_1.11.2_source_read/flink-core/target/flink-core-1.11.2.jar against /Users/xingoo/.m2/repository/org/apache/flink/flink-core/1.11.1/flink-core-1.11.1.jar
+***  MODIFIED CLASS: PUBLIC org.apache.flink.configuration.ClusterOptions  (not serializable)
+	===  CLASS FILE FORMAT VERSION: 52.0 <- 52.0
+	+++  NEW FIELD: PUBLIC(+) STATIC(+) FINAL(+) org.apache.flink.configuration.ConfigOption HALT_ON_FATAL_ERROR
+		+++  NEW ANNOTATION: org.apache.flink.annotation.docs.Documentation$Section
+			+++  NEW ELEMENT: value=expert_cluster (+)

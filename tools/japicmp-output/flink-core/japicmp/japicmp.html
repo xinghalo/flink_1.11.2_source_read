@@ -1,0 +1,281 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Comparing source compatibility of /Users/xingoo/Documents/source/flink_1.11.2_source_read/flink-core/target/flink-core-1.11.2.jar against /Users/xingoo/.m2/repository/org/apache/flink/flink-core/1.11.1/flink-core-1.11.1.jar</title>
+<style type="text/css">
+body {
+    font-family: Verdana;
+}
+.title {
+    font-weight: bold;
+}
+.new {
+    color: green;
+}
+.removed {
+    color: red;
+}
+.modified {
+    color: orange;
+}
+.unchanged {
+    color: black;
+}
+thead tr td {
+    font-weight: bold;
+}
+.toc {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #dcdcdc;
+    padding: 5px;
+    background: #ededed;
+    display: inline-block;
+}
+table {
+    border-collapse: collapse;
+}
+table tr td {
+    border: 1px solid black;
+    padding: 5px;
+}
+table thead {
+    background-color: #dee3e9;
+}
+table tbody tr td.matrix_layout {
+    background-color: #dee3e9;
+    font-weight: bold;
+}
+.class {
+    margin-bottom: 2em;
+    border: 1px solid #dcdcdc;
+    padding: 5px;
+    background: #ededed;
+    display: inline-block;
+}
+.class_compatibilityChanges {
+	margin-top: 1em;
+}
+
+.class_fileFormatVersion {
+	margin-top: 1em;
+}
+.class_superclass {
+    margin-top: 1em;
+}
+.class_interfaces {
+    margin-top: 1em;
+}
+.class_fields {
+    margin-top: 1em;
+}
+.class_serialVersionUid {
+    margin-top: 1em;
+}
+.class_constructors {
+    margin-top: 1em;
+}
+.class_methods {
+    margin-top: 1em;
+}
+.class_annotations {
+    margin-top: 1em;
+}
+.label {
+    font-weight: bold;
+}
+.label_class_member {
+    background-color: #4d7a97;
+    display: inline-block;
+    padding: 5px;
+}
+.toc_link {
+    margin-left: 10px;
+    font-size: 0.5em;
+}
+.modifier {
+    font-style: italic;
+}
+.method_return_type {
+
+}
+ul {
+    list-style-type: none;
+    padding: 0px 0px;
+}
+.meta-information {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background: #ededed;
+    display: inline-block;
+}
+.warnings {
+    margin-top: 1em;
+    font-size: 0.75em;
+}
+.explanations {
+	margin-bottom: 2em;
+}
+
+</style>
+</head>
+<body>
+<span class="title">Comparing source compatibility of /Users/xingoo/Documents/source/flink_1.11.2_source_read/flink-core/target/flink-core-1.11.2.jar against /Users/xingoo/.m2/repository/org/apache/flink/flink-core/1.11.1/flink-core-1.11.1.jar</span>
+<br>
+<div class="meta-information">
+<table>
+<tr>
+<td>Old:</td><td>/Users/xingoo/.m2/repository/org/apache/flink/flink-core/1.11.1/flink-core-1.11.1.jar</td>
+</tr>
+<tr>
+<td>New:</td><td>/Users/xingoo/Documents/source/flink_1.11.2_source_read/flink-core/target/flink-core-1.11.2.jar</td>
+</tr>
+<tr>
+<td>Created:</td><td>2020-09-29T08:32:23.949+0800</td>
+</tr>
+<tr>
+<td>Access modifier filter:</td><td>PUBLIC</td>
+</tr>
+<tr>
+<td>Only modifications:</td><td>true</td>
+</tr>
+<tr>
+<td>Only binary incompatible modifications:</td><td>false</td>
+</tr>
+<tr>
+<td>Ignore missing classes:</td><td>false</td>
+</tr>
+<tr>
+<td>Includes:</td><td>@org.apache.flink.annotation.Public;@org.apache.flink.annotation.Public;@org.apache.flink.annotation.Public;@org.apache.flink.annotation.Public;@org.apache.flink.annotation.Public;@org.apache.flink.annotation.PublicEvolving;@org.apache.flink.annotation.PublicEvolving;@org.apache.flink.annotation.PublicEvolving;@org.apache.flink.annotation.PublicEvolving;@org.apache.flink.annotation.PublicEvolving</td>
+</tr>
+<tr>
+<td>Excludes:</td><td>@org.apache.flink.annotation.Internal;@org.apache.flink.annotation.Internal;@org.apache.flink.annotation.Internal;@org.apache.flink.annotation.Internal;@org.apache.flink.annotation.Internal;org.apache.flink.streaming.api.datastream.DataStream#DataStream(org.apache.flink.streaming.api.environment.StreamExecutionEnvironment,org.apache.flink.streaming.api.transformations.StreamTransformation);org.apache.flink.streaming.api.environment.LegacyLocalStreamEnvironment;org.apache.flink.streaming.api.environment.LegacyLocalStreamEnvironment;org.apache.flink.streaming.api.functions.sink.RichSinkFunction#invoke(java.lang.Object);org.apache.flink.streaming.api.functions.sink.SinkFunction;org.apache.flink.streaming.api.functions.sink.SinkFunction;org.apache.flink.api.java.hadoop.mapred.HadoopInputFormat;org.apache.flink.api.java.hadoop.mapred.HadoopInputFormat;org.apache.flink.api.java.hadoop.mapred.HadoopOutputFormat;org.apache.flink.api.java.hadoop.mapred.HadoopOutputFormat;org.apache.flink.api.java.hadoop.mapreduce.HadoopInputFormat;org.apache.flink.api.java.hadoop.mapreduce.HadoopInputFormat;org.apache.flink.api.java.hadoop.mapreduce.HadoopOutputFormat;org.apache.flink.api.java.hadoop.mapreduce.HadoopOutputFormat;org.apache.flink.api.scala.hadoop.mapred.HadoopInputFormat;org.apache.flink.api.scala.hadoop.mapred.HadoopInputFormat;org.apache.flink.api.scala.hadoop.mapred.HadoopOutputFormat;org.apache.flink.api.scala.hadoop.mapred.HadoopOutputFormat;org.apache.flink.api.scala.hadoop.mapreduce.HadoopInputFormat;org.apache.flink.api.scala.hadoop.mapreduce.HadoopInputFormat;org.apache.flink.api.scala.hadoop.mapreduce.HadoopOutputFormat;org.apache.flink.api.scala.hadoop.mapreduce.HadoopOutputFormat;org.apache.flink.api.common.ExecutionConfig#CONFIG_KEY;org.apache.flink.core.fs.FileSystem\$FSKey;org.apache.flink.core.fs.FileSystem\$FSKey;org.apache.flink.core.fs.FileSystem#initialize(java.net.URI);org.apache.flink.core.fs.FileSystem#isFlinkSupportedScheme(java.lang.String);org.apache.flink.core.fs.FileSystem#setDefaultScheme(org.apache.flink.configuration.Configuration);org.apache.flink.api.java.typeutils.WritableTypeInfo;org.apache.flink.api.java.typeutils.WritableTypeInfo;org.apache.flink.api.java.typeutils.AvroTypeInfo;org.apache.flink.api.java.typeutils.AvroTypeInfo;org.apache.flink.configuration.ConfigConstants#DEFAULT_NETWORK_REQUEST_BACKOFF_INITIAL;org.apache.flink.configuration.ConfigConstants#DEFAULT_NETWORK_REQUEST_BACKOFF_MAX;org.apache.flink.configuration.ConfigConstants#DEFAULT_TASK_CANCELLATION_TIMEOUT_MILLIS;org.apache.flink.configuration.ConfigConstants#ENABLE_QUARANTINE_MONITOR;org.apache.flink.configuration.ConfigConstants#NETWORK_REQUEST_BACKOFF_INITIAL_KEY;org.apache.flink.configuration.ConfigConstants#NETWORK_REQUEST_BACKOFF_MAX_KEY;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_WATCH_THRESHOLD;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_WATCH_THRESHOLD;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_DISPATCHER_THROUGHPUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_DISPATCHER_THROUGHPUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_VERIFY_HOSTNAME;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_VERIFY_HOSTNAME;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_LOOKUP_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_LOOKUP_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_HEARTBEAT_INTERVAL;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_HEARTBEAT_INTERVAL;org.apache.flink.configuration.ConfigConstants.DEFAULT_RECOVERY_MODE;org.apache.flink.configuration.ConfigConstants.DEFAULT_RECOVERY_MODE;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_ENABLED;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_ENABLED;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_CLIENT_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_CLIENT_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_STATE_BACKEND;org.apache.flink.configuration.ConfigConstants.DEFAULT_STATE_BACKEND;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_ASK_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_ASK_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_THRESHOLD;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_THRESHOLD;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_FRAMESIZE;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_FRAMESIZE;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_PROTOCOL;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_PROTOCOL;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_LOG_LIFECYCLE_EVENTS;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_LOG_LIFECYCLE_EVENTS;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_ALGORITHMS;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_ALGORITHMS;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_HEARTBEAT_PAUSE;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_HEARTBEAT_PAUSE;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_SSL_ENABLED;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_SSL_ENABLED;org.apache.flink.api.common.serialization.DeserializationSchema;org.apache.flink.api.common.serialization.DeserializationSchema;org.apache.flink.api.common.serialization.SerializationSchema;org.apache.flink.api.common.serialization.SerializationSchema;org.apache.flink.api.common.typeinfo.TypeHint;org.apache.flink.api.common.typeinfo.TypeHint;org.apache.flink.api.java.typeutils.TypeInfoParser;org.apache.flink.api.java.typeutils.TypeInfoParser</td>
+</tr>
+<tr>
+<td>Semantic Versioning:</td><td>0.1.0</td>
+</tr>
+</table>
+</div>
+<ul>
+<li>
+<a href="#toc">Classes</a>
+</li>
+</ul>
+    
+<div class="toc">
+<a name="toc"></a><span class="label">Classes:</span>
+<table>
+<thead>
+<tr>
+<td>Status</td><td>Fully Qualified Name</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="
+						modified
+					">MODIFIED</span></td><td><a href="#org.apache.flink.configuration.ClusterOptions">org.apache.flink.configuration.ClusterOptions</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="explanations">
+<span>
+				Binary incompatible changes are marked with (!) while source incompatible changes are marked with (*).
+			</span>
+</div>
+<div>
+<div>
+<div class="class" id="org.apache.flink.configuration.ClusterOptions">
+<div class="class_header">
+<span class="label"><a name="org.apache.flink.configuration.ClusterOptions"></a><span class="
+						modified
+					">MODIFIED</span><span class="
+					">
+					&nbsp;
+				</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						">public&nbsp;</span><span class="
+							unchanged modifier
+						"></span><span class="
+							unchanged modifier
+						"></span><span class="
+						unchanged
+					">class</span>&nbsp;
+						org.apache.flink.configuration.ClusterOptions</span><a href="#toc" class="toc_link">top</a>
+</div>
+<div class="class_superclass"></div>
+<div class="class_interfaces"></div>
+<div class="class_fields">
+<span class="label_class_member">Fields:</span>
+<table>
+<thead>
+<tr>
+<td>Status</td><td>Modifier</td><td>Type</td><td>Field</td><td>Compatibility Changes:</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="
+						new
+					">NEW</span></td><td><span class="
+							new modifier
+						">public&nbsp;</span><span class="
+							new modifier
+						">static&nbsp;</span><span class="
+							new modifier
+						">final&nbsp;</span><span class="
+							new modifier
+						"></span></td><td><span class="
+						new modifier
+					">org.apache.flink.configuration.ConfigOption</span></td><td>
+			n.a.
+		</td><td>HALT_ON_FATAL_ERROR<div class="class_annotations">
+<span class="label_class_member">Annotations:</span>
+<table>
+<thead>
+<tr>
+<td>Status:</td><td>Fully Qualified Name:</td><td>Elements:</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="
+						new
+					">NEW</span></td><td>org.apache.flink.annotation.docs.Documentation$Section</td><td>
+<table>
+<thead>
+<tr>
+<td>Status:</td><td>Name:</td><td>Old element values:</td><td>New element values:</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="
+						new
+					">NEW</span></td><td>value</td><td></td><td>expert_cluster</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="class_constructors"></div>
+<div class="class_methods"></div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

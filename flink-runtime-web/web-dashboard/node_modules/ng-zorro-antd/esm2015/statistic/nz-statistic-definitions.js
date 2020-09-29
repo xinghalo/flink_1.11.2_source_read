@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+export const REFRESH_INTERVAL = 1000 / 30;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibnotc3RhdGlzdGljLWRlZmluaXRpb25zLmpzIiwic291cmNlUm9vdCI6Im5nOi8vbmctem9ycm8tYW50ZC8iLCJzb3VyY2VzIjpbInN0YXRpc3RpYy9uei1zdGF0aXN0aWMtZGVmaW5pdGlvbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7QUFFQSxNQUFNLE9BQU8sZ0JBQWdCLEdBQUcsSUFBSSxHQUFHLEVBQUUiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgdHlwZSBOelN0YXRpc3RpY1ZhbHVlVHlwZSA9IG51bWJlciB8IHN0cmluZztcblxuZXhwb3J0IGNvbnN0IFJFRlJFU0hfSU5URVJWQUwgPSAxMDAwIC8gMzA7XG4iXX0=

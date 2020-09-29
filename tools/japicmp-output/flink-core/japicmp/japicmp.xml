@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<japicmp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" accessModifier="PUBLIC" creationTimestamp="2020-09-29T08:32:23.949+0800" ignoreMissingClasses="false" ignoreMissingClassesByRegularExpressions="" newJar="/Users/xingoo/Documents/source/flink_1.11.2_source_read/flink-core/target/flink-core-1.11.2.jar" newVersion="1.11.2" oldJar="/Users/xingoo/.m2/repository/org/apache/flink/flink-core/1.11.1/flink-core-1.11.1.jar" oldVersion="1.11.1" onlyBinaryIncompatibleModifications="false" onlyModifications="true" packagesExclude="@org.apache.flink.annotation.Internal;@org.apache.flink.annotation.Internal;@org.apache.flink.annotation.Internal;@org.apache.flink.annotation.Internal;@org.apache.flink.annotation.Internal;org.apache.flink.streaming.api.datastream.DataStream#DataStream(org.apache.flink.streaming.api.environment.StreamExecutionEnvironment,org.apache.flink.streaming.api.transformations.StreamTransformation);org.apache.flink.streaming.api.environment.LegacyLocalStreamEnvironment;org.apache.flink.streaming.api.environment.LegacyLocalStreamEnvironment;org.apache.flink.streaming.api.functions.sink.RichSinkFunction#invoke(java.lang.Object);org.apache.flink.streaming.api.functions.sink.SinkFunction;org.apache.flink.streaming.api.functions.sink.SinkFunction;org.apache.flink.api.java.hadoop.mapred.HadoopInputFormat;org.apache.flink.api.java.hadoop.mapred.HadoopInputFormat;org.apache.flink.api.java.hadoop.mapred.HadoopOutputFormat;org.apache.flink.api.java.hadoop.mapred.HadoopOutputFormat;org.apache.flink.api.java.hadoop.mapreduce.HadoopInputFormat;org.apache.flink.api.java.hadoop.mapreduce.HadoopInputFormat;org.apache.flink.api.java.hadoop.mapreduce.HadoopOutputFormat;org.apache.flink.api.java.hadoop.mapreduce.HadoopOutputFormat;org.apache.flink.api.scala.hadoop.mapred.HadoopInputFormat;org.apache.flink.api.scala.hadoop.mapred.HadoopInputFormat;org.apache.flink.api.scala.hadoop.mapred.HadoopOutputFormat;org.apache.flink.api.scala.hadoop.mapred.HadoopOutputFormat;org.apache.flink.api.scala.hadoop.mapreduce.HadoopInputFormat;org.apache.flink.api.scala.hadoop.mapreduce.HadoopInputFormat;org.apache.flink.api.scala.hadoop.mapreduce.HadoopOutputFormat;org.apache.flink.api.scala.hadoop.mapreduce.HadoopOutputFormat;org.apache.flink.api.common.ExecutionConfig#CONFIG_KEY;org.apache.flink.core.fs.FileSystem\$FSKey;org.apache.flink.core.fs.FileSystem\$FSKey;org.apache.flink.core.fs.FileSystem#initialize(java.net.URI);org.apache.flink.core.fs.FileSystem#isFlinkSupportedScheme(java.lang.String);org.apache.flink.core.fs.FileSystem#setDefaultScheme(org.apache.flink.configuration.Configuration);org.apache.flink.api.java.typeutils.WritableTypeInfo;org.apache.flink.api.java.typeutils.WritableTypeInfo;org.apache.flink.api.java.typeutils.AvroTypeInfo;org.apache.flink.api.java.typeutils.AvroTypeInfo;org.apache.flink.configuration.ConfigConstants#DEFAULT_NETWORK_REQUEST_BACKOFF_INITIAL;org.apache.flink.configuration.ConfigConstants#DEFAULT_NETWORK_REQUEST_BACKOFF_MAX;org.apache.flink.configuration.ConfigConstants#DEFAULT_TASK_CANCELLATION_TIMEOUT_MILLIS;org.apache.flink.configuration.ConfigConstants#ENABLE_QUARANTINE_MONITOR;org.apache.flink.configuration.ConfigConstants#NETWORK_REQUEST_BACKOFF_INITIAL_KEY;org.apache.flink.configuration.ConfigConstants#NETWORK_REQUEST_BACKOFF_MAX_KEY;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_WATCH_THRESHOLD;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_WATCH_THRESHOLD;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_DISPATCHER_THROUGHPUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_DISPATCHER_THROUGHPUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_VERIFY_HOSTNAME;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_VERIFY_HOSTNAME;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_LOOKUP_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_LOOKUP_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_HEARTBEAT_INTERVAL;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_HEARTBEAT_INTERVAL;org.apache.flink.configuration.ConfigConstants.DEFAULT_RECOVERY_MODE;org.apache.flink.configuration.ConfigConstants.DEFAULT_RECOVERY_MODE;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_ENABLED;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_ENABLED;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_CLIENT_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_CLIENT_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_STATE_BACKEND;org.apache.flink.configuration.ConfigConstants.DEFAULT_STATE_BACKEND;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_ASK_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_ASK_TIMEOUT;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_THRESHOLD;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_THRESHOLD;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_FRAMESIZE;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_FRAMESIZE;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_PROTOCOL;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_PROTOCOL;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_LOG_LIFECYCLE_EVENTS;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_LOG_LIFECYCLE_EVENTS;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_ALGORITHMS;org.apache.flink.configuration.ConfigConstants.DEFAULT_SECURITY_SSL_ALGORITHMS;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_HEARTBEAT_PAUSE;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_TRANSPORT_HEARTBEAT_PAUSE;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_SSL_ENABLED;org.apache.flink.configuration.ConfigConstants.DEFAULT_AKKA_SSL_ENABLED;org.apache.flink.api.common.serialization.DeserializationSchema;org.apache.flink.api.common.serialization.DeserializationSchema;org.apache.flink.api.common.serialization.SerializationSchema;org.apache.flink.api.common.serialization.SerializationSchema;org.apache.flink.api.common.typeinfo.TypeHint;org.apache.flink.api.common.typeinfo.TypeHint;org.apache.flink.api.java.typeutils.TypeInfoParser;org.apache.flink.api.java.typeutils.TypeInfoParser" packagesInclude="@org.apache.flink.annotation.Public;@org.apache.flink.annotation.Public;@org.apache.flink.annotation.Public;@org.apache.flink.annotation.Public;@org.apache.flink.annotation.Public;@org.apache.flink.annotation.PublicEvolving;@org.apache.flink.annotation.PublicEvolving;@org.apache.flink.annotation.PublicEvolving;@org.apache.flink.annotation.PublicEvolving;@org.apache.flink.annotation.PublicEvolving" semanticVersioning="0.1.0" title="Comparing source compatibility of /Users/xingoo/Documents/source/flink_1.11.2_source_read/flink-core/target/flink-core-1.11.2.jar against /Users/xingoo/.m2/repository/org/apache/flink/flink-core/1.11.1/flink-core-1.11.1.jar" xsi:noNamespaceSchemaLocation="japicmp.xsd">
+    <classes>
+        <class binaryCompatible="true" changeStatus="MODIFIED" fullyQualifiedName="org.apache.flink.configuration.ClusterOptions" javaObjectSerializationCompatible="NOT_SERIALIZABLE" javaObjectSerializationCompatibleAsString="not serializable" sourceCompatible="true">
+            <annotations/>
+            <attributes>
+                <attribute changeStatus="UNCHANGED" newValue="NON_SYNTHETIC" oldValue="NON_SYNTHETIC"/>
+            </attributes>
+            <classFileFormatVersion changeStatus="UNCHANGED" majorVersionNew="52" majorVersionOld="52" minorVersionNew="0" minorVersionOld="0"/>
+            <classType changeStatus="UNCHANGED" newType="CLASS" oldType="CLASS"/>
+            <compatibilityChanges/>
+            <constructors/>
+            <fields>
+                <field binaryCompatible="true" changeStatus="NEW" name="HALT_ON_FATAL_ERROR" sourceCompatible="true">
+                    <annotations>
+                        <annotation binaryCompatible="true" changeStatus="NEW" fullyQualifiedName="org.apache.flink.annotation.docs.Documentation$Section" sourceCompatible="true">
+                            <compatibilityChanges/>
+                            <elements>
+<element binaryCompatible="true" changeStatus="NEW" name="value" sourceCompatible="true">
+    <compatibilityChanges/>
+    <newElementValues>
+        <newElementValue fullyQualifiedName="java.lang.String" name="n.a." type="String" value="expert_cluster">
+            <values/>
+        </newElementValue>
+    </newElementValues>
+    <oldElementValues/>
+</element>
+                            </elements>
+                        </annotation>
+                    </annotations>
+                    <attributes>
+                        <attribute changeStatus="NEW" newValue="NON_SYNTHETIC" oldValue="n.a."/>
+                    </attributes>
+                    <compatibilityChanges/>
+                    <modifiers>
+                        <modifier changeStatus="NEW" newValue="PUBLIC" oldValue="n.a."/>
+                        <modifier changeStatus="NEW" newValue="STATIC" oldValue="n.a."/>
+                        <modifier changeStatus="NEW" newValue="FINAL" oldValue="n.a."/>
+                        <modifier changeStatus="NEW" newValue="NON_SYNTHETIC" oldValue="n.a."/>
+                    </modifiers>
+                    <type changeStatus="NEW" newValue="org.apache.flink.configuration.ConfigOption" oldValue="n.a."/>
+                </field>
+            </fields>
+            <interfaces/>
+            <methods/>
+            <modifiers>
+                <modifier changeStatus="UNCHANGED" newValue="NON_FINAL" oldValue="NON_FINAL"/>
+                <modifier changeStatus="UNCHANGED" newValue="NON_STATIC" oldValue="NON_STATIC"/>
+                <modifier changeStatus="UNCHANGED" newValue="PUBLIC" oldValue="PUBLIC"/>
+                <modifier changeStatus="UNCHANGED" newValue="NON_ABSTRACT" oldValue="NON_ABSTRACT"/>
+                <modifier changeStatus="UNCHANGED" newValue="NON_SYNTHETIC" oldValue="NON_SYNTHETIC"/>
+            </modifiers>
+            <serialVersionUid serialVersionUidDefaultNew="n.a." serialVersionUidDefaultOld="n.a." serialVersionUidInClassNew="n.a." serialVersionUidInClassOld="n.a." serializableNew="false" serializableOld="false"/>
+            <superclass binaryCompatible="true" changeStatus="UNCHANGED" sourceCompatible="true" superclassNew="java.lang.Object" superclassOld="java.lang.Object">
+                <compatibilityChanges/>
+            </superclass>
+        </class>
+    </classes>
+</japicmp>

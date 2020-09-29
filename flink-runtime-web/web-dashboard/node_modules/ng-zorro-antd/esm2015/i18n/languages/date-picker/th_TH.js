@@ -1,0 +1,16 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import CalendarLocale from '../calendar/th_TH';
+import TimePickerLocale from '../time-picker/th_TH';
+// Merge into a locale object
+/** @type {?} */
+const locale = {
+    lang: Object.assign({ placeholder: 'เลือกวันที่', rangePlaceholder: ['วันเริ่มต้น', 'วันสิ้นสุด'] }, CalendarLocale),
+    timePickerLocale: Object.assign({}, TimePickerLocale)
+};
+// All settings at:
+// https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json
+export default locale;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGhfVEguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy16b3Jyby1hbnRkLyIsInNvdXJjZXMiOlsiaTE4bi9sYW5ndWFnZXMvZGF0ZS1waWNrZXIvdGhfVEgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sY0FBYyxNQUFNLG1CQUFtQixDQUFDO0FBQy9DLE9BQU8sZ0JBQWdCLE1BQU0sc0JBQXNCLENBQUM7OztNQUc5QyxNQUFNLEdBQUc7SUFDYixJQUFJLGtCQUNGLFdBQVcsRUFBTyxhQUFhLEVBQy9CLGdCQUFnQixFQUFFLENBQUUsYUFBYSxFQUFFLFlBQVksQ0FBRSxJQUM5QyxjQUFjLENBQ2xCO0lBQ0QsZ0JBQWdCLG9CQUFPLGdCQUFnQixDQUFFO0NBQzFDOzs7QUFLRCxlQUFlLE1BQU0sQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBDYWxlbmRhckxvY2FsZSBmcm9tICcuLi9jYWxlbmRhci90aF9USCc7XG5pbXBvcnQgVGltZVBpY2tlckxvY2FsZSBmcm9tICcuLi90aW1lLXBpY2tlci90aF9USCc7XG5cbi8vIE1lcmdlIGludG8gYSBsb2NhbGUgb2JqZWN0XG5jb25zdCBsb2NhbGUgPSB7XG4gIGxhbmcgICAgICAgICAgICA6IHtcbiAgICBwbGFjZWhvbGRlciAgICAgOiAn4LmA4Lil4Li34Lit4LiB4Lin4Lix4LiZ4LiX4Li14LmIJyxcbiAgICByYW5nZVBsYWNlaG9sZGVyOiBbICfguKfguLHguJnguYDguKPguLTguYjguKHguJXguYnguJknLCAn4Lin4Lix4LiZ4Liq4Li04LmJ4LiZ4Liq4Li44LiUJyBdLFxuICAgIC4uLkNhbGVuZGFyTG9jYWxlXG4gIH0sXG4gIHRpbWVQaWNrZXJMb2NhbGU6IHsgLi4uVGltZVBpY2tlckxvY2FsZSB9XG59O1xuXG4vLyBBbGwgc2V0dGluZ3MgYXQ6XG4vLyBodHRwczovL2dpdGh1Yi5jb20vYW50LWRlc2lnbi9hbnQtZGVzaWduL2Jsb2IvbWFzdGVyL2NvbXBvbmVudHMvZGF0ZS1waWNrZXIvbG9jYWxlL2V4YW1wbGUuanNvblxuXG5leHBvcnQgZGVmYXVsdCBsb2NhbGU7XG4iXX0=

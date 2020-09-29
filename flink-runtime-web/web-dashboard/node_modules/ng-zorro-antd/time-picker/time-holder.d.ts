@@ -1,0 +1,30 @@
+import { Observable } from 'rxjs';
+export declare class TimeHolder {
+    private _seconds;
+    private _hours;
+    private _minutes;
+    private _defaultOpenValue;
+    private _value;
+    private _changes;
+    setDefaultValueIfNil(): void;
+    setMinutes(value: number, disabled: boolean): this;
+    setHours(value: number, disabled: boolean): this;
+    setSeconds(value: number, disabled: boolean): this;
+    readonly changes: Observable<Date>;
+    value: Date | undefined;
+    setValue(value: Date | undefined): this;
+    clear(): void;
+    readonly isEmpty: boolean;
+    private _clear;
+    private update;
+    changed(): void;
+    hours: number | undefined;
+    minutes: number | undefined;
+    seconds: number | undefined;
+    defaultOpenValue: Date;
+    setDefaultOpenValue(value: Date): this;
+    readonly defaultHours: number;
+    readonly defaultMinutes: number;
+    readonly defaultSeconds: number;
+    constructor();
+}

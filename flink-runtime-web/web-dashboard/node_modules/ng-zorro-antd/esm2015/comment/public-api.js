@@ -1,0 +1,8 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { NzCommentModule } from './nz-comment.module';
+export { NzCommentComponent } from './nz-comment.component';
+export { NzCommentAvatarDirective, NzCommentContentDirective, NzCommentActionHostDirective, NzCommentActionComponent } from './nz-comment-cells';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL25nLXpvcnJvLWFudGQvIiwic291cmNlcyI6WyJjb21tZW50L3B1YmxpYy1hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLGdDQUFjLHFCQUFxQixDQUFDO0FBQ3BDLG1DQUFjLHdCQUF3QixDQUFDO0FBQ3ZDLDRIQUFjLG9CQUFvQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9uei1jb21tZW50Lm1vZHVsZSc7XG5leHBvcnQgKiBmcm9tICcuL256LWNvbW1lbnQuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vbnotY29tbWVudC1jZWxscyc7XG4iXX0=

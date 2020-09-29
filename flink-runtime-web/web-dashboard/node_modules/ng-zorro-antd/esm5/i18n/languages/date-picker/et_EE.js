@@ -1,0 +1,17 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import * as tslib_1 from "tslib";
+import CalendarLocale from '../calendar/et_EE';
+import TimePickerLocale from '../time-picker/et_EE';
+// 统一合并为完整的 Locale
+/** @type {?} */
+var locale = {
+    lang: tslib_1.__assign({ placeholder: 'Vali kuupäev', rangePlaceholder: ['Algus kuupäev', 'Lõpu kuupäev'] }, CalendarLocale),
+    timePickerLocale: tslib_1.__assign({}, TimePickerLocale),
+};
+// All settings at:
+// https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json
+export default locale;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZXRfRUUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy16b3Jyby1hbnRkLyIsInNvdXJjZXMiOlsiaTE4bi9sYW5ndWFnZXMvZGF0ZS1waWNrZXIvZXRfRUUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7QUFBQSxPQUFPLGNBQWMsTUFBTSxtQkFBbUIsQ0FBQztBQUMvQyxPQUFPLGdCQUFnQixNQUFNLHNCQUFzQixDQUFDOzs7SUFHOUMsTUFBTSxHQUFHO0lBQ2IsSUFBSSxxQkFDRixXQUFXLEVBQUUsY0FBYyxFQUMzQixnQkFBZ0IsRUFBRSxDQUFDLGVBQWUsRUFBRSxjQUFjLENBQUMsSUFDaEQsY0FBYyxDQUNsQjtJQUNELGdCQUFnQix1QkFDWCxnQkFBZ0IsQ0FDcEI7Q0FDRjs7O0FBS0QsZUFBZSxNQUFNLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgQ2FsZW5kYXJMb2NhbGUgZnJvbSAnLi4vY2FsZW5kYXIvZXRfRUUnO1xuaW1wb3J0IFRpbWVQaWNrZXJMb2NhbGUgZnJvbSAnLi4vdGltZS1waWNrZXIvZXRfRUUnO1xuXG4vLyDnu5/kuIDlkIjlubbkuLrlrozmlbTnmoQgTG9jYWxlXG5jb25zdCBsb2NhbGUgPSB7XG4gIGxhbmc6IHtcbiAgICBwbGFjZWhvbGRlcjogJ1ZhbGkga3V1cMOkZXYnLFxuICAgIHJhbmdlUGxhY2Vob2xkZXI6IFsnQWxndXMga3V1cMOkZXYnLCAnTMO1cHUga3V1cMOkZXYnXSxcbiAgICAuLi5DYWxlbmRhckxvY2FsZSxcbiAgfSxcbiAgdGltZVBpY2tlckxvY2FsZToge1xuICAgIC4uLlRpbWVQaWNrZXJMb2NhbGUsXG4gIH0sXG59O1xuXG4vLyBBbGwgc2V0dGluZ3MgYXQ6XG4vLyBodHRwczovL2dpdGh1Yi5jb20vYW50LWRlc2lnbi9hbnQtZGVzaWduL2Jsb2IvbWFzdGVyL2NvbXBvbmVudHMvZGF0ZS1waWNrZXIvbG9jYWxlL2V4YW1wbGUuanNvblxuXG5leHBvcnQgZGVmYXVsdCBsb2NhbGU7XG4iXX0=

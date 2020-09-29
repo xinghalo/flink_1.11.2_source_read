@@ -1,0 +1,11 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { NzModalComponent } from './nz-modal.component';
+export { NzModalRef } from './nz-modal-ref.class';
+export { NzModalModule } from './nz-modal.module';
+export { NzModalService } from './nz-modal.service';
+export { NZ_MODAL_CONFIG } from './nz-modal-config';
+export {} from './nz-modal.type';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL25nLXpvcnJvLWFudGQvIiwic291cmNlcyI6WyJtb2RhbC9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxPQUFPLEVBQUUsZ0JBQWdCLEVBQUUsTUFBTSxzQkFBc0IsQ0FBQztBQUN4RCxPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sc0JBQXNCLENBQUM7QUFDbEQsT0FBTyxFQUFFLGFBQWEsRUFBRSxNQUFNLG1CQUFtQixDQUFDO0FBQ2xELE9BQU8sRUFBRSxjQUFjLEVBQUUsTUFBTSxvQkFBb0IsQ0FBQztBQUNwRCxPQUFPLEVBQUUsZUFBZSxFQUFpQixNQUFNLG1CQUFtQixDQUFDO0FBQ25FLGVBQWMsaUJBQWlCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgeyBOek1vZGFsQ29tcG9uZW50IH0gZnJvbSAnLi9uei1tb2RhbC5jb21wb25lbnQnO1xuZXhwb3J0IHsgTnpNb2RhbFJlZiB9IGZyb20gJy4vbnotbW9kYWwtcmVmLmNsYXNzJztcbmV4cG9ydCB7IE56TW9kYWxNb2R1bGUgfSBmcm9tICcuL256LW1vZGFsLm1vZHVsZSc7XG5leHBvcnQgeyBOek1vZGFsU2VydmljZSB9IGZyb20gJy4vbnotbW9kYWwuc2VydmljZSc7XG5leHBvcnQgeyBOWl9NT0RBTF9DT05GSUcsIE56TW9kYWxDb25maWcgfSBmcm9tICcuL256LW1vZGFsLWNvbmZpZyc7XG5leHBvcnQgKiBmcm9tICcuL256LW1vZGFsLnR5cGUnO1xuIl19

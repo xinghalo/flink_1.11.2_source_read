@@ -1,0 +1,9 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @record
+ */
+export function NzSizeMap() { }
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2l6ZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL25nLXpvcnJvLWFudGQvIiwic291cmNlcyI6WyJjb3JlL3R5cGVzL3NpemUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUlBLCtCQUVDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHR5cGUgTnpTaXplTERTVHlwZSA9ICdsYXJnZScgfCAnZGVmYXVsdCcgfCAnc21hbGwnO1xuZXhwb3J0IHR5cGUgTnpTaXplTURTVHlwZSA9ICdtaWRkbGUnIHwgJ2RlZmF1bHQnIHwgJ3NtYWxsJztcbmV4cG9ydCB0eXBlIE56U2l6ZURTVHlwZSA9ICdkZWZhdWx0JyB8ICdzbWFsbCc7XG5cbmV4cG9ydCBpbnRlcmZhY2UgTnpTaXplTWFwIHtcbiAgWyBzaXplOiBzdHJpbmcgXTogc3RyaW5nO1xufVxuIl19

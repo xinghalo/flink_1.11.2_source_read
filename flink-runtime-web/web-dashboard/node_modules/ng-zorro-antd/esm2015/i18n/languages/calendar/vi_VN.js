@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import vi_VN from '../date-picker/vi_VN';
+export default vi_VN;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidmlfVk4uanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy16b3Jyby1hbnRkLyIsInNvdXJjZXMiOlsiaTE4bi9sYW5ndWFnZXMvY2FsZW5kYXIvdmlfVk4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sS0FBSyxNQUFNLHNCQUFzQixDQUFDO0FBQ3pDLGVBQWUsS0FBSyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHZpX1ZOIGZyb20gJy4uL2RhdGUtcGlja2VyL3ZpX1ZOJztcbmV4cG9ydCBkZWZhdWx0IHZpX1ZOO1xuIl19

@@ -1,0 +1,16 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import CalendarLocale from '../calendar/el_GR';
+import TimePickerLocale from '../time-picker/el_GR';
+// Merge into a locale object
+/** @type {?} */
+const locale = {
+    lang: Object.assign({ placeholder: 'Επιλέξτε ημερομηνία', rangePlaceholder: ['Αρχική ημερομηνία', 'Τελική ημερομηνία'] }, CalendarLocale),
+    timePickerLocale: Object.assign({}, TimePickerLocale),
+};
+// All settings at:
+// https://github.com/ant-design/ant-design/issues/424
+export default locale;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZWxfR1IuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZy16b3Jyby1hbnRkLyIsInNvdXJjZXMiOlsiaTE4bi9sYW5ndWFnZXMvZGF0ZS1waWNrZXIvZWxfR1IudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sY0FBYyxNQUFNLG1CQUFtQixDQUFDO0FBQy9DLE9BQU8sZ0JBQWdCLE1BQU0sc0JBQXNCLENBQUM7OztNQUc5QyxNQUFNLEdBQUc7SUFDYixJQUFJLGtCQUNGLFdBQVcsRUFBRSxxQkFBcUIsRUFDbEMsZ0JBQWdCLEVBQUUsQ0FBQyxtQkFBbUIsRUFBRSxtQkFBbUIsQ0FBQyxJQUN6RCxjQUFjLENBQ2xCO0lBQ0QsZ0JBQWdCLG9CQUNYLGdCQUFnQixDQUNwQjtDQUNGOzs7QUFLRCxlQUFlLE1BQU0sQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBDYWxlbmRhckxvY2FsZSBmcm9tICcuLi9jYWxlbmRhci9lbF9HUic7XG5pbXBvcnQgVGltZVBpY2tlckxvY2FsZSBmcm9tICcuLi90aW1lLXBpY2tlci9lbF9HUic7XG5cbi8vIE1lcmdlIGludG8gYSBsb2NhbGUgb2JqZWN0XG5jb25zdCBsb2NhbGUgPSB7XG4gIGxhbmc6IHtcbiAgICBwbGFjZWhvbGRlcjogJ86Vz4DOuc67zq3Ovs+EzrUgzrfOvM61z4HOv868zrfOvc6vzrEnLFxuICAgIHJhbmdlUGxhY2Vob2xkZXI6IFsnzpHPgc+HzrnOus6uIM63zrzOtc+Bzr/OvM63zr3Or86xJywgJ86kzrXOu865zrrOriDOt868zrXPgc6/zrzOt869zq/OsSddLFxuICAgIC4uLkNhbGVuZGFyTG9jYWxlLFxuICB9LFxuICB0aW1lUGlja2VyTG9jYWxlOiB7XG4gICAgLi4uVGltZVBpY2tlckxvY2FsZSxcbiAgfSxcbn07XG5cbi8vIEFsbCBzZXR0aW5ncyBhdDpcbi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbnQtZGVzaWduL2FudC1kZXNpZ24vaXNzdWVzLzQyNFxuXG5leHBvcnQgZGVmYXVsdCBsb2NhbGU7XG4iXX0=
