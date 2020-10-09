@@ -158,10 +158,15 @@ public class StreamingJobGraphGenerator {
 		preValidate();
 
 		// make sure that all vertices start immediately
+		// 配置调度模式
+		// LAZY_FROM_SOURCES
+		// LAZY_FROM_SOURCES_WITH_BATCH_SLOT_REQUEST
+		// EAGER
 		jobGraph.setScheduleMode(streamGraph.getScheduleMode());
 
 		// Generate deterministic hashes for the nodes in order to identify them across
 		// submission iff they didn't change.
+		// 为节点生成id，保证向后兼容
 		Map<Integer, byte[]> hashes = defaultStreamGraphHasher.traverseStreamGraphAndGenerateHashes(streamGraph);
 
 		// Generate legacy version hashes for backwards compatibility
@@ -174,6 +179,7 @@ public class StreamingJobGraphGenerator {
 
 		setPhysicalEdges();
 
+		// 配置共享组
 		setSlotSharingAndCoLocation();
 
 		setManagedMemoryFraction(
@@ -187,9 +193,11 @@ public class StreamingJobGraphGenerator {
 
 		jobGraph.setSavepointRestoreSettings(streamGraph.getSavepointRestoreSettings());
 
+		// 读取缓存文件
 		JobGraphUtils.addUserArtifactEntries(streamGraph.getUserArtifacts(), jobGraph);
 
 		// set the ExecutionConfig last when it has been finalized
+		// 配置执行环境
 		try {
 			jobGraph.setExecutionConfig(streamGraph.getExecutionConfig());
 		}
@@ -277,6 +285,7 @@ public class StreamingJobGraphGenerator {
 			List<StreamEdge> chainableOutputs = new ArrayList<StreamEdge>();
 			List<StreamEdge> nonChainableOutputs = new ArrayList<StreamEdge>();
 
+			// 获取当前节点的输出边，判断是否满足chain的条件
 			StreamNode currentNode = streamGraph.getStreamNode(currentNodeId);
 
 			for (StreamEdge outEdge : currentNode.getOutEdges()) {
@@ -287,11 +296,13 @@ public class StreamingJobGraphGenerator {
 				}
 			}
 
+			// 对于可以chain的边，调用createChain递归
 			for (StreamEdge chainable : chainableOutputs) {
 				transitiveOutEdges.addAll(
 						createChain(chainable.getTargetId(), chainIndex + 1, chainInfo));
 			}
 
+			// 不能chain的边，
 			for (StreamEdge nonChainable : nonChainableOutputs) {
 				transitiveOutEdges.add(nonChainable);
 				createChain(nonChainable.getTargetId(), 0, chainInfo.newChain(nonChainable.getTargetId()));
@@ -639,13 +650,13 @@ public class StreamingJobGraphGenerator {
 		StreamNode upStreamVertex = streamGraph.getSourceVertex(edge);
 		StreamNode downStreamVertex = streamGraph.getTargetVertex(edge);
 
-		return downStreamVertex.getInEdges().size() == 1
-				&& upStreamVertex.isSameSlotSharingGroup(downStreamVertex)
-				&& areOperatorsChainable(upStreamVertex, downStreamVertex, streamGraph)
-				&& (edge.getPartitioner() instanceof ForwardPartitioner)
-				&& edge.getShuffleMode() != ShuffleMode.BATCH
-				&& upStreamVertex.getParallelism() == downStreamVertex.getParallelism()
-				&& streamGraph.isChainingEnabled();
+		return downStreamVertex.getInEdges().size() == 1 // 下游节点的入边为1
+				&& upStreamVertex.isSameSlotSharingGroup(downStreamVertex) // 相同的slot组
+				&& areOperatorsChainable(upStreamVertex, downStreamVertex, streamGraph) // 上下游不为null，且连接策略为always
+				&& (edge.getPartitioner() instanceof ForwardPartitioner) // 分区器为 ForwardPartition
+				&& edge.getShuffleMode() != ShuffleMode.BATCH // shuffle 为 Batch
+				&& upStreamVertex.getParallelism() == downStreamVertex.getParallelism() // 并行度一致
+				&& streamGraph.isChainingEnabled(); // 开启chain
 	}
 
 	@VisibleForTesting

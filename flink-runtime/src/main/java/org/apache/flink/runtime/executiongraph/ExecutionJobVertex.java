@@ -92,6 +92,9 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 
 	private final JobVertex jobVertex;
 
+	/**
+	 * 具体的执行节点，数量与并行度一致.
+	 */
 	private final ExecutionVertex[] taskVertices;
 
 	private final IntermediateResult[] producedDataSets;
@@ -159,6 +162,7 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 		this.graph = graph;
 		this.jobVertex = jobVertex;
 
+		// 计算节点的并行度，默认使用default parallelism
 		int vertexParallelism = jobVertex.getParallelism();
 		int numTaskVertices = vertexParallelism > 0 ? vertexParallelism : defaultParallelism;
 
@@ -196,6 +200,7 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 		}
 
 		// create the intermediate results
+		// 创建中间结果
 		this.producedDataSets = new IntermediateResult[jobVertex.getNumberOfProducedIntermediateDataSets()];
 
 		for (int i = 0; i < jobVertex.getProducedDataSets().size(); i++) {
@@ -209,6 +214,7 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 		}
 
 		// create all task vertices
+		// 根据并行度创建具体的vertex
 		for (int i = 0; i < numTaskVertices; i++) {
 			ExecutionVertex vertex = new ExecutionVertex(
 					this,

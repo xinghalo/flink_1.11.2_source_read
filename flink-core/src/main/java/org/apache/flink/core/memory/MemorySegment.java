@@ -104,6 +104,7 @@ public abstract class MemorySegment {
 
 	/**
 	 * The beginning of the byte array contents, relative to the byte array object.
+	 * 二进制字节数组的起始索引，相对于字节数组对象（TODO 不懂）
 	 */
 	@SuppressWarnings("restriction")
 	protected static final long BYTE_ARRAY_BASE_OFFSET = UNSAFE.arrayBaseOffset(byte[].class);
@@ -111,6 +112,9 @@ public abstract class MemorySegment {
 	/**
 	 * Constant that flags the byte order. Because this is a boolean constant, the JIT compiler can
 	 * use this well to aggressively eliminate the non-applicable code paths.
+	 * 判断是否为小端模式存储
+	 * 小端模式：低位字节在内存的低地址端
+	 * 大端模式：低位字节在内存的高地址端
 	 */
 	private static final boolean LITTLE_ENDIAN = (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN);
 
@@ -123,23 +127,31 @@ public abstract class MemorySegment {
 	 * off the heap. If we have this buffer, we must never void this reference, or the memory
 	 * segment will point to undefined addresses outside the heap and may in out-of-order execution
 	 * cases cause segmentation faults.
+	 *
+	 * 如果使用堆内存，则为堆上的字节数组；如果是堆外内存，则为null。
 	 */
 	protected final byte[] heapMemory;
 
 	/**
 	 * The address to the data, relative to the heap memory byte array. If the heap memory byte
 	 * array is <tt>null</tt>, this becomes an absolute memory address outside the heap.
+	 *
+	 * 字节数组对应的起始位置
 	 */
 	protected long address;
 
 	/**
 	 * The address one byte after the last addressable byte, i.e. <tt>address + size</tt> while the
 	 * segment is not disposed.
+	 *
+	 * 字节数组对应的结束位置，address + size
 	 */
 	protected final long addressLimit;
 
 	/**
 	 * The size in bytes of the memory segment.
+	 *
+	 * 内存端的字节数
 	 */
 	protected final int size;
 

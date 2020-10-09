@@ -42,7 +42,7 @@ import java.util.Collections;
  *   keyed.window(ProcessingTimeSessionWindows.withGap(Time.minutes(1)));
  * } </pre>
  */
-public class ProcessingTimeSessionWindows extends MergingWindowAssigner<Object, TimeWindow> {
+public class  ProcessingTimeSessionWindows extends MergingWindowAssigner<Object, TimeWindow> {
 	private static final long serialVersionUID = 1L;
 
 	protected long sessionTimeout;
