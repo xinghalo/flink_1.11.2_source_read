@@ -84,6 +84,7 @@ public final class YarnApplicationClusterEntryPoint extends ApplicationClusterEn
 
 		final Configuration configuration = YarnEntrypointUtils.loadConfiguration(workingDirectory, env);
 
+		// 获取程序代码信息，TODO，应该有Jar和Main函数信息
 		PackagedProgram program = null;
 		try {
 			program = getPackagedProgram(configuration);
@@ -99,9 +100,11 @@ public final class YarnApplicationClusterEntryPoint extends ApplicationClusterEn
 			System.exit(1);
 		}
 
+		// 创建 ClusterEntryPoint
 		YarnApplicationClusterEntryPoint yarnApplicationClusterEntrypoint =
 				new YarnApplicationClusterEntryPoint(configuration, program);
 
+		// 启动
 		ClusterEntrypoint.runClusterEntrypoint(yarnApplicationClusterEntrypoint);
 	}
 

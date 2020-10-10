@@ -370,7 +370,9 @@ public class ExecutionVertex implements AccessExecutionVertex, Archiveable<Archi
 
 	public void connectSource(int inputNumber, IntermediateResult source, JobEdge edge, int consumerNumber) {
 
+		// 边的连接策略
 		final DistributionPattern pattern = edge.getDistributionPattern();
+		// 中间结果集
 		final IntermediateResultPartition[] sourcePartitions = source.getPartitions();
 
 		ExecutionEdge[] edges;
@@ -415,11 +417,12 @@ public class ExecutionVertex implements AccessExecutionVertex, Archiveable<Archi
 		final int parallelism = getTotalNumberOfParallelSubtasks();
 
 		// simple case same number of sources as targets
+		// 如果并行度与分区数数量刚好相同，则一对一映射即可
 		if (numSources == parallelism) {
 			return new ExecutionEdge[] { new ExecutionEdge(sourcePartitions[subTaskIndex], this, inputNumber) };
 		}
 		else if (numSources < parallelism) {
-
+			// 如果并行度大于分区数，
 			int sourcePartition;
 
 			// check if the pattern is regular or irregular

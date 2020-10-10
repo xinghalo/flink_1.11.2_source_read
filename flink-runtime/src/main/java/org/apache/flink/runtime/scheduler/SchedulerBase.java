@@ -257,6 +257,16 @@ public abstract class SchedulerBase implements SchedulerNG {
 		return newExecutionGraph;
 	}
 
+	/**
+	 * 构建执行图.
+	 *
+	 * @param currentJobManagerJobMetricGroup
+	 * @param shuffleMaster
+	 * @param partitionTracker
+	 * @return
+	 * @throws JobExecutionException
+	 * @throws JobException
+	 */
 	private ExecutionGraph createExecutionGraph(
 		JobManagerJobMetricGroup currentJobManagerJobMetricGroup,
 		ShuffleMaster<?> shuffleMaster,

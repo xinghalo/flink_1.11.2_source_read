@@ -252,6 +252,7 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 		}
 
 		// set up the input splits, if the vertex has any
+		// 确定输入
 		try {
 			@SuppressWarnings("unchecked")
 			InputSplitSource<InputSplit> splitSource = (InputSplitSource<InputSplit>) jobVertex.getInputSplitSource();
@@ -424,12 +425,14 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 
 	public void connectToPredecessors(Map<IntermediateDataSetID, IntermediateResult> intermediateDataSets) throws JobException {
 
+		// 获取任务节点的输入
 		List<JobEdge> inputs = jobVertex.getInputs();
 
 		if (LOG.isDebugEnabled()) {
 			LOG.debug(String.format("Connecting ExecutionJobVertex %s (%s) to %d predecessors.", jobVertex.getID(), jobVertex.getName(), inputs.size()));
 		}
 
+		// 这里的一个输入是一个Source
 		for (int num = 0; num < inputs.size(); num++) {
 			JobEdge edge = inputs.get(num);
 
@@ -445,6 +448,7 @@ public class ExecutionJobVertex implements AccessExecutionJobVertex, Archiveable
 
 			// fetch the intermediate result via ID. if it does not exist, then it either has not been created, or the order
 			// in which this method is called for the job vertices is not a topological order
+			// 通过sourceId获取结果集
 			IntermediateResult ires = intermediateDataSets.get(edge.getSourceId());
 			if (ires == null) {
 				throw new JobException("Cannot connect this job graph to the previous graph. No previous intermediate result found for ID "

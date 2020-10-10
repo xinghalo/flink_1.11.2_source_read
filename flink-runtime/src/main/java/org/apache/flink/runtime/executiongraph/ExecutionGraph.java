@@ -791,6 +791,14 @@ public class ExecutionGraph implements AccessExecutionGraph {
 	//  Actions
 	// --------------------------------------------------------------------------------------------
 
+	/**
+	 * 主要完成两件事：
+	 * 1 把JobVertex转换成ExecutionGraph
+	 * 2 通过ExecutionEdge连接节点
+	 *
+	 * @param topologiallySorted 拓扑排序
+	 * @throws JobException job
+	 */
 	public void attachJobGraph(List<JobVertex> topologiallySorted) throws JobException {
 
 		assertRunningInJobMasterMainThread();
@@ -811,6 +819,7 @@ public class ExecutionGraph implements AccessExecutionGraph {
 			}
 
 			// create the execution job vertex and attach it to the graph
+			// 创建执行节点
 			ExecutionJobVertex ejv = new ExecutionJobVertex(
 					this,
 					jobVertex,
@@ -820,6 +829,7 @@ public class ExecutionGraph implements AccessExecutionGraph {
 					globalModVersion,
 					createTimestamp);
 
+			// 连接执行任务与中间结果
 			ejv.connectToPredecessors(this.intermediateResults);
 
 			ExecutionJobVertex previousTask = this.tasks.putIfAbsent(jobVertex.getID(), ejv);

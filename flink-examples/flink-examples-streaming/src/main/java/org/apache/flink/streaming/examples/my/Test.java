@@ -25,6 +25,7 @@ public class Test {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+        env.setParallelism(1);
 
         env.socketTextStream("localhost", 12345, "\n")
                 // 格式化事件
@@ -37,7 +38,7 @@ public class Test {
                 })
                 .filter(Objects::nonNull)
                 // 定义事件水印
-                .assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<Bean>(Time.seconds(1)) {
+                .assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<Bean>(Time.seconds(5)) {
                     @Override
                     public long extractTimestamp(Bean bean) {
                         System.out.println("bean name="+bean.name+" time="+bean.time);
@@ -70,9 +71,10 @@ public class Test {
         private EventTimeTrigger() {}
 
         public TriggerResult onElement(Object element, long timestamp, TimeWindow window, TriggerContext ctx) throws Exception {
-
-
-            System.out.println("当前时间戳" + new Timestamp(timestamp).toLocalDateTime() +"当前水印" + new Timestamp(ctx.getCurrentWatermark()).toLocalDateTime());
+            System.out.println("事件事件=" + new Timestamp(timestamp).toLocalDateTime()
+                    +" 当前水印=" + new Timestamp(ctx.getCurrentWatermark()).toLocalDateTime()
+                    +" 窗口时间=" + new Timestamp(window.maxTimestamp()).toLocalDateTime()
+            );
             if (window.maxTimestamp() <= ctx.getCurrentWatermark()) {
                 // if the watermark is already past the window fire immediately
                 return TriggerResult.FIRE;
@@ -84,6 +86,9 @@ public class Test {
 
         @Override
         public TriggerResult onEventTime(long time, TimeWindow window, TriggerContext ctx) {
+            System.out.println("time=" + new Timestamp(time).toLocalDateTime()
+                    +" 当前水印=" + new Timestamp(ctx.getCurrentWatermark()).toLocalDateTime()
+                    +" 窗口时间=" + new Timestamp(window.maxTimestamp()).toLocalDateTime());
             return time == window.maxTimestamp() ?
                     TriggerResult.FIRE :
                     TriggerResult.CONTINUE;
