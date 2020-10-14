@@ -98,7 +98,9 @@ public abstract class RecordWriter<T extends IOReadableWritable> implements Avai
 		this.serializer = new SpanningRecordSerializer<T>();
 
 		checkArgument(timeout >= -1);
+		// 当timeout为0时，总是flush，即每条数据都进行flush，效率最高
 		this.flushAlways = (timeout == 0);
+
 		if (timeout == -1 || timeout == 0) {
 			outputFlusher = null;
 		} else {
@@ -106,6 +108,7 @@ public abstract class RecordWriter<T extends IOReadableWritable> implements Avai
 				DEFAULT_OUTPUT_FLUSH_THREAD_NAME :
 				DEFAULT_OUTPUT_FLUSH_THREAD_NAME + " for " + taskName;
 
+			// 创建额外线程，用于定时flush分区数据
 			outputFlusher = new OutputFlusher(threadName, timeout);
 			outputFlusher.start();
 		}
@@ -114,9 +117,11 @@ public abstract class RecordWriter<T extends IOReadableWritable> implements Avai
 	protected void emit(T record, int targetChannel) throws IOException, InterruptedException {
 		checkErroneous();
 
+		// 序列化
 		serializer.serializeRecord(record);
 
 		// Make sure we don't hold onto the large intermediate serialization buffer for too long
+		// 保存
 		if (copyFromSerializerToTargetChannel(targetChannel)) {
 			serializer.prune();
 		}
@@ -132,25 +137,30 @@ public abstract class RecordWriter<T extends IOReadableWritable> implements Avai
 		serializer.reset();
 
 		boolean pruneTriggered = false;
+		// 向序列化器中加入记录
 		BufferBuilder bufferBuilder = getBufferBuilder(targetChannel);
 		SerializationResult result = serializer.copyToBufferBuilder(bufferBuilder);
+		// buffer已满
 		while (result.isFullBuffer()) {
 			finishBufferBuilder(bufferBuilder);
 
 			// If this was a full record, we are done. Not breaking out of the loop at this point
 			// will lead to another buffer request before breaking out (that would not be a
 			// problem per se, but it can lead to stalls in the pipeline).
+			// 数据完全写入
 			if (result.isFullRecord()) {
 				pruneTriggered = true;
 				emptyCurrentBufferBuilder(targetChannel);
 				break;
 			}
 
+			// 数据没有完全写入，buffer已满，重新申请Buffer继续写
 			bufferBuilder = requestNewBufferBuilder(targetChannel);
 			result = serializer.copyToBufferBuilder(bufferBuilder);
 		}
 		checkState(!serializer.hasSerializedData(), "All data should be written at once");
 
+		// 控制是否立即发送，还是延迟发送
 		if (flushAlways) {
 			flushTargetPartition(targetChannel);
 		}
@@ -176,6 +186,9 @@ public abstract class RecordWriter<T extends IOReadableWritable> implements Avai
 		}
 	}
 
+	/**
+	 * 遍历 sub partition 出发flush操作
+	 */
 	public void flushAll() {
 		targetPartition.flushAll();
 	}
@@ -331,6 +344,7 @@ public abstract class RecordWriter<T extends IOReadableWritable> implements Avai
 			try {
 				while (running) {
 					try {
+						// 每个一定时间出发一次flush all
 						Thread.sleep(timeout);
 					} catch (InterruptedException e) {
 						// propagate this if we are still running, because it should not happen

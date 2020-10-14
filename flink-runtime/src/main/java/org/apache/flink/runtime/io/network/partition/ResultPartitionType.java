@@ -73,16 +73,32 @@ public enum ResultPartitionType {
 	 */
 	PIPELINED_BOUNDED(true, true, true, false);
 
-	/** Can the partition be consumed while being produced? */
+	/**
+	 * Can the partition be consumed while being produced?
+	 *
+	 * 能否在数据产生的时候直接消费.
+	 * */
 	private final boolean isPipelined;
 
-	/** Does the partition produce back pressure when not consumed? */
+	/**
+	 * Does the partition produce back pressure when not consumed?
+	 *
+	 * 是否有背压机制
+	 * */
 	private final boolean hasBackPressure;
 
-	/** Does this partition use a limited number of (network) buffers? */
+	/**
+	 * Does this partition use a limited number of (network) buffers?
+	 *
+	 * 是否使用固定大小的buffers存储
+	 * */
 	private final boolean isBounded;
 
-	/** This partition will not be released after consuming if 'isPersistent' is true. */
+	/**
+	 * This partition will not be released after consuming if 'isPersistent' is true.
+	 *
+	 * 是否在消费完直接释放
+	 * */
 	private final boolean isPersistent;
 
 	/**

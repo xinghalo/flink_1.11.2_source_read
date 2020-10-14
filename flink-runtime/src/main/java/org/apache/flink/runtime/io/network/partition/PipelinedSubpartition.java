@@ -396,6 +396,7 @@ public class PipelinedSubpartition extends ResultSubpartition {
 			flushRequested = buffers.size() > 1 || notifyDataAvailable;
 		}
 		if (notifyDataAvailable) {
+			// 通知数据可用
 			notifyDataAvailable();
 		}
 	}
@@ -464,6 +465,9 @@ public class PipelinedSubpartition extends ResultSubpartition {
 		return readView != null && !flushRequested && !isBlockedByCheckpoint && getNumberOfFinishedBuffers() == 1;
 	}
 
+	/**
+	 * 通知数据可用
+	 */
 	private void notifyDataAvailable() {
 		if (readView != null) {
 			readView.notifyDataAvailable();

@@ -73,8 +73,10 @@ public final class ChannelSelectorRecordWriter<T extends IOReadableWritable> ext
 	public void broadcastEmit(T record) throws IOException, InterruptedException {
 		checkErroneous();
 
+		// 1 序列化
 		serializer.serializeRecord(record);
 
+		// 2 选录
 		boolean pruneAfterCopying = false;
 		for (int targetChannel = 0; targetChannel < numberOfChannels; targetChannel++) {
 			if (copyFromSerializerToTargetChannel(targetChannel)) {
@@ -82,6 +84,7 @@ public final class ChannelSelectorRecordWriter<T extends IOReadableWritable> ext
 			}
 		}
 
+		// 3 保存
 		if (pruneAfterCopying) {
 			serializer.prune();
 		}

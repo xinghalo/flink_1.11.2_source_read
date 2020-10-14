@@ -29,16 +29,20 @@ import java.util.Set;
  * Component which encapsulates the scheduling logic.
  * It can react to execution state changes and partition consumable events.
  * Moreover, it is responsible for resolving task failures.
+ *
+ * 封装调度细节，可以针对状态的变化、分区读取事件进行处理，另外也负责任务的容错.
  */
 public interface SchedulingStrategy {
 
 	/**
 	 * Called when the scheduling is started (initial scheduling operation).
+	 * 调度入口，触发调度
 	 */
 	void startScheduling();
 
 	/**
 	 * Called whenever vertices need to be restarted (due to task failure).
+	 * 重启失败的任务
 	 *
 	 * @param verticesToRestart The tasks need to be restarted
 	 */
@@ -46,6 +50,7 @@ public interface SchedulingStrategy {
 
 	/**
 	 * Called whenever an {@link Execution} changes its state.
+	 * 当状态变更时触发
 	 *
 	 * @param executionVertexId The id of the task
 	 * @param executionState The new state of the execution
@@ -54,6 +59,7 @@ public interface SchedulingStrategy {
 
 	/**
 	 * Called whenever an {@link IntermediateResultPartition} becomes consumable.
+	 * 当partition中的数据可消费时触发
 	 *
 	 * @param resultPartitionId The id of the result partition
 	 */

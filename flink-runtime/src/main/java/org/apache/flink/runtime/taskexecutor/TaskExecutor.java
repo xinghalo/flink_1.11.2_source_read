@@ -610,6 +610,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 				throw new TaskSubmissionException("Could not submit task.", e);
 			}
 
+			// 实例化Task
 			Task task = new Task(
 				jobInformation,
 				taskInformation,
@@ -654,6 +655,8 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 			}
 
 			if (taskAdded) {
+
+				// 任务启动执行
 				task.startTaskThread();
 
 				setupResultPartitionBookkeeping(
@@ -832,6 +835,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 		final Task task = taskSlotTable.getTask(executionAttemptID);
 
 		if (task != null) {
+			// 触发检查点barrier
 			task.triggerCheckpointBarrier(checkpointId, checkpointTimestamp, checkpointOptions, advanceToEndOfEventTime);
 
 			return CompletableFuture.completedFuture(Acknowledge.get());
@@ -1941,13 +1945,16 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 		}
 	}
 
+	/**
+	 * 对应的JobManager监听, 接收Slot分配信息, 输出Slot信息
+	 */
 	private class JobManagerHeartbeatListener implements HeartbeatListener<AllocatedSlotReport, AccumulatorReport> {
 
 		@Override
 		public void notifyHeartbeatTimeout(final ResourceID resourceID) {
 			validateRunsInMainThread();
 			log.info("The heartbeat of JobManager with id {} timed out.", resourceID);
-
+			// 如果超时，获取连接信息，断开连接，尝试重连
 			jobTable
 				.getConnection(resourceID)
 				.ifPresent(
@@ -1960,9 +1967,11 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 		@Override
 		public void reportPayload(ResourceID resourceID, AllocatedSlotReport allocatedSlotReport) {
 			validateRunsInMainThread();
+
 			OptionalConsumer.of(jobTable.getConnection(allocatedSlotReport.getJobId()))
 				.ifPresent(
 					jobManagerConnection -> {
+						// 同步slot信息到JobMaster
 						syncSlotsWithSnapshotFromJobMaster(jobManagerConnection.getJobManagerGateway(), allocatedSlotReport);
 					})
 				.ifNotPresent(() -> log.debug("Ignoring allocated slot report from job {} because there is no active leader.", allocatedSlotReport.getJobId()));
@@ -1989,6 +1998,9 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 		}
 	}
 
+	/**
+	 * 对应ResourceManager的监听器，输入为空，输出为心跳信息
+	 */
 	private class ResourceManagerHeartbeatListener implements HeartbeatListener<Void, TaskExecutorHeartbeatPayload> {
 
 		@Override
@@ -1997,7 +2009,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 			// first check whether the timeout is still valid
 			if (establishedResourceManagerConnection != null && establishedResourceManagerConnection.getResourceManagerResourceId().equals(resourceId)) {
 				log.info("The heartbeat of ResourceManager with id {} timed out.", resourceId);
-
+				// 尝试重连
 				reconnectToResourceManager(new TaskManagerException(
 					String.format("The heartbeat of ResourceManager with id %s timed out.", resourceId)));
 			} else {

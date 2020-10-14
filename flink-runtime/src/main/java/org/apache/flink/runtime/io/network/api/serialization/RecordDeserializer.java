@@ -33,8 +33,11 @@ public interface RecordDeserializer<T extends IOReadableWritable> {
 	 * Status of the deserialization result.
 	 */
 	enum DeserializationResult {
+		// 记录未读取完，缓冲区已经消费完
 		PARTIAL_RECORD(false, true),
+		// 记录读取完，缓冲区未消费完
 		INTERMEDIATE_RECORD_FROM_BUFFER(true, false),
+		// 记录读取完，缓冲区消费完
 		LAST_RECORD_FROM_BUFFER(true, true);
 
 		private final boolean isFullRecord;

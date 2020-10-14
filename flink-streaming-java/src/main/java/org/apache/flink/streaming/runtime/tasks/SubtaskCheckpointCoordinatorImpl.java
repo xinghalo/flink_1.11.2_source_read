@@ -227,7 +227,9 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
 		// records/watermarks/timers/callbacks.
 		// We generally try to emit the checkpoint barrier as soon as possible to not affect downstream
 		// checkpoint alignments
+		// 下面的步骤都是原子的，需要尽可能快的把 barrier 发送你到下游
 
+		// 检查 checkpoint id 的合法性
 		if (lastCheckpointId >= metadata.getCheckpointId()) {
 			LOG.info("Out of order checkpoint barrier (aborted previously?): {} >= {}", lastCheckpointId, metadata.getCheckpointId());
 			channelStateWriter.abort(metadata.getCheckpointId(), new CancellationException(), true);
@@ -236,9 +238,11 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
 		}
 
 		// Step (0): Record the last triggered checkpointId and abort the sync phase of checkpoint if necessary.
+		// 检查上一次检查点，必要的时候禁止检查点的保存
 		lastCheckpointId = metadata.getCheckpointId();
 		if (checkAndClearAbortedStatus(metadata.getCheckpointId())) {
 			// broadcast cancel checkpoint marker to avoid downstream back-pressure due to checkpoint barrier align.
+			// 广播检查点的取消事件，避免持续对齐产生消息的积压
 			operatorChain.broadcastEvent(new CancelCheckpointMarker(metadata.getCheckpointId()));
 			LOG.info("Checkpoint {} has been notified as aborted, would not trigger any checkpoint.", metadata.getCheckpointId());
 			return;
@@ -246,9 +250,11 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
 
 		// Step (1): Prepare the checkpoint, allow operators to do some pre-barrier work.
 		//           The pre-barrier work should be nothing or minimal in the common case.
+		// 准备工作，应该尽可能的小
 		operatorChain.prepareSnapshotPreBarrier(metadata.getCheckpointId());
 
 		// Step (2): Send the checkpoint barrier downstream
+		// 发送 检查点barrier
 		operatorChain.broadcastEvent(
 			new CheckpointBarrier(metadata.getCheckpointId(), metadata.getTimestamp(), options),
 			options.isUnalignedCheckpoint());
@@ -260,7 +266,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
 
 		// Step (4): Take the state snapshot. This should be largely asynchronous, to not impact progress of the
 		// streaming topology
-
+		// 进行状态快照，可能会非常耗时
 		Map<OperatorID, OperatorSnapshotFutures> snapshotFutures = new HashMap<>(operatorChain.getNumberOfOperators());
 		try {
 			if (takeSnapshotSync(snapshotFutures, metadata, metrics, options, operatorChain, isCanceled)) {

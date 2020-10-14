@@ -26,6 +26,8 @@ import org.apache.flink.runtime.clusterframework.types.ResourceID;
  * payload. This payload is reported to the heartbeat target and contains additional information.
  * The payload can be empty which is indicated by a null value.
  *
+ * 定义心跳发送和接收。心跳的接收和发送一般也会包含一个payload，用于添加额外信息。
+ *
  * @param <I> Type of the payload which is sent to the heartbeat target
  */
 public interface HeartbeatTarget<I> {

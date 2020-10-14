@@ -125,6 +125,7 @@ public class LazyFromSourcesSchedulingStrategy implements SchedulingStrategy {
 	private void allocateSlotsAndDeployExecutionVertices(
 			final Iterable<? extends SchedulingExecutionVertex> vertices) {
 
+		// 筛选CREATED状态，且具备执行条件的vertex
 		final Set<ExecutionVertexID> verticesToDeploy = IterableUtils.toStream(vertices)
 			.filter(IS_IN_CREATED_EXECUTION_STATE.and(isInputConstraintSatisfied()))
 			.map(SchedulingExecutionVertex::getId)
@@ -137,6 +138,7 @@ public class LazyFromSourcesSchedulingStrategy implements SchedulingStrategy {
 				deploymentOptions::get);
 
 		for (ExecutionVertexDeploymentOption deploymentOption : vertexDeploymentOptions) {
+			// 申请资源并启动
 			schedulerOperations.allocateSlotsAndDeploy(Collections.singletonList(deploymentOption));
 		}
 	}

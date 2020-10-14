@@ -838,7 +838,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 			CheckpointMetrics checkpointMetrics = new CheckpointMetrics().setAlignmentDurationNanos(0L);
 
 			subtaskCheckpointCoordinator.initCheckpoint(checkpointMetaData.getCheckpointId(), checkpointOptions);
-
+			// 执行检查点
 			boolean success = performCheckpoint(checkpointMetaData, checkpointOptions, checkpointMetrics, advanceToEndOfEventTime);
 			if (!success) {
 				declineCheckpoint(checkpointMetaData.getCheckpointId());
@@ -908,6 +908,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 			checkpointMetaData.getCheckpointId(), checkpointOptions.getCheckpointType(), getName());
 
 		if (isRunning) {
+			// 如果是运行状态，则执行检查点
 			actionExecutor.runThrowing(() -> {
 
 				if (checkpointOptions.getCheckpointType().isSynchronous()) {
@@ -918,6 +919,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 					}
 				}
 
+				// 调用coordinator触发检查点
 				subtaskCheckpointCoordinator.checkpointState(
 					checkpointMetaData,
 					checkpointOptions,
@@ -928,6 +930,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 
 			return true;
 		} else {
+			// 如果是非运行状态，则取消检查点
 			actionExecutor.runThrowing(() -> {
 				// we cannot perform our checkpoint - let the downstream operators know that they
 				// should not wait for any input from this operator

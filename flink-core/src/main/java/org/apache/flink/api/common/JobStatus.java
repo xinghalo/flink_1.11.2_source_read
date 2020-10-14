@@ -26,37 +26,65 @@ import org.apache.flink.annotation.PublicEvolving;
 @PublicEvolving
 public enum JobStatus {
 
-	/** Job is newly created, no task has started to run. */
+	/**
+	 * Job is newly created, no task has started to run.
+	 * 作业刚创建，还未执行
+	 * */
 	CREATED(TerminalState.NON_TERMINAL),
 
-	/** Some tasks are scheduled or running, some may be pending, some may be finished. */
+	/**
+	 * Some tasks are scheduled or running, some may be pending, some may be finished.
+	 * 申请资源成功后，对于流处理所有Task都在执行；对于批处理，部分Task被调度执行.
+	 * */
 	RUNNING(TerminalState.NON_TERMINAL),
 
-	/** The job has failed and is currently waiting for the cleanup to complete. */
+	/**
+	 * The job has failed and is currently waiting for the cleanup to complete.
+	 * 作业执行失败，等待资源清理
+	 * */
 	FAILING(TerminalState.NON_TERMINAL),
 
-	/** The job has failed with a non-recoverable task failure. */
+	/**
+	 * The job has failed with a non-recoverable task failure.
+	 * 异常，达到重启次数限制时，则进入该状态
+	 * */
 	FAILED(TerminalState.GLOBALLY),
 
-	/** Job is being cancelled. */
+	/**
+	 * Job is being cancelled.
+	 * 在Flink接口或UI上进行作业取消
+	 * */
 	CANCELLING(TerminalState.NON_TERMINAL),
 
-	/** Job has been cancelled. */
+	/**
+	 * Job has been cancelled.
+	 * 任务已经被取消
+	 * */
 	CANCELED(TerminalState.GLOBALLY),
 
-	/** All of the job's tasks have successfully finished. */
+	/**
+	 * All of the job's tasks have successfully finished.
+	 * 所有任务均完成.
+	 * */
 	FINISHED(TerminalState.GLOBALLY),
 
-	/** The job is currently undergoing a reset and total restart. */
+	/**
+	 * The job is currently undergoing a reset and total restart.
+	 * 任务出错，需要重启
+	 * */
 	RESTARTING(TerminalState.NON_TERMINAL),
 
 	/**
 	 * The job has been suspended which means that it has been stopped but not been removed from a
 	 * potential HA job store.
+	 * 任务挂起前，取消Running的任务，task进如canceled，销毁通信组件，等待恢复ExecutionGraph
 	 */
 	SUSPENDED(TerminalState.LOCALLY),
 
-	/** The job is currently reconciling and waits for task execution report to recover state. */
+	/**
+	 * The job is currently reconciling and waits for task execution report to recover state.
+	 * 任务正在被调节，等待任务报告恢复状态
+	 * */
 	RECONCILING(TerminalState.NON_TERMINAL);
 
 	// --------------------------------------------------------------------------------------------

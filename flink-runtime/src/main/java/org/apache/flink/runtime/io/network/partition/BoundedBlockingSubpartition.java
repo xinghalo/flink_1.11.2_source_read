@@ -26,7 +26,6 @@ import org.apache.flink.util.FlinkRuntimeException;
 
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.GuardedBy;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
@@ -151,6 +150,12 @@ final class BoundedBlockingSubpartition extends ResultSubpartition {
 		throw new UnsupportedOperationException("The batch job does not support unaligned checkpoint.");
 	}
 
+	/**
+	 * 批处理情况下，flush缓存.
+	 *
+	 * @param bufferConsumer bc
+	 * @throws IOException e
+	 */
 	private void writeAndCloseBufferConsumer(BufferConsumer bufferConsumer) throws IOException {
 		try {
 			final Buffer buffer = bufferConsumer.build();

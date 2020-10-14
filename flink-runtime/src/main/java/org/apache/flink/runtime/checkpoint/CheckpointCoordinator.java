@@ -490,7 +490,7 @@ public class CheckpointCoordinator {
 			@Nullable String externalSavepointLocation,
 			boolean isPeriodic,
 			boolean advanceToEndOfTime) {
-
+		// 不是同步 且 非保存点
 		if (advanceToEndOfTime && !(props.isSynchronous() && props.isSavepoint())) {
 			return FutureUtils.completedExceptionally(new IllegalArgumentException(
 				"Only synchronous savepoints are allowed to advance the watermark to MAX."));
@@ -575,6 +575,8 @@ public class CheckpointCoordinator {
 								} else {
 									// no exception, no discarding, everything is OK
 									final long checkpointId = checkpoint.getCheckpointId();
+
+									// 触发快照
 									snapshotTaskState(
 										timestamp,
 										checkpointId,

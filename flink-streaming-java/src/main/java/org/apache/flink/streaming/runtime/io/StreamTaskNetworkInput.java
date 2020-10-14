@@ -144,12 +144,14 @@ public final class StreamTaskNetworkInput<T> implements StreamTaskInput<T> {
 			// get the stream element from the deserializer
 			if (currentRecordDeserializer != null) {
 				DeserializationResult result = currentRecordDeserializer.getNextRecord(deserializationDelegate);
+
 				if (result.isBufferConsumed()) {
 					currentRecordDeserializer.getCurrentBuffer().recycleBuffer();
 					currentRecordDeserializer = null;
 				}
 
 				if (result.isFullRecord()) {
+					// 处理元素
 					processElement(deserializationDelegate.getInstance(), output);
 					return InputStatus.MORE_AVAILABLE;
 				}
@@ -162,6 +164,7 @@ public final class StreamTaskNetworkInput<T> implements StreamTaskInput<T> {
 				if (bufferOrEvent.get().isEvent() && bufferOrEvent.get().getEvent() instanceof CheckpointBarrier) {
 					return InputStatus.MORE_AVAILABLE;
 				}
+				// 向buffer添加数据
 				processBufferOrEvent(bufferOrEvent.get());
 			} else {
 				if (checkpointedInputGate.isFinished()) {
@@ -175,12 +178,16 @@ public final class StreamTaskNetworkInput<T> implements StreamTaskInput<T> {
 
 	private void processElement(StreamElement recordOrMark, DataOutput<T> output) throws Exception {
 		if (recordOrMark.isRecord()){
+			// 记录
 			output.emitRecord(recordOrMark.asRecord());
 		} else if (recordOrMark.isWatermark()) {
+			// 水印
 			statusWatermarkValve.inputWatermark(recordOrMark.asWatermark(), lastChannel);
 		} else if (recordOrMark.isLatencyMarker()) {
+			// 延迟标记
 			output.emitLatencyMarker(recordOrMark.asLatencyMarker());
 		} else if (recordOrMark.isStreamStatus()) {
+			// 流状态
 			statusWatermarkValve.inputStreamStatus(recordOrMark.asStreamStatus(), lastChannel);
 		} else {
 			throw new UnsupportedOperationException("Unknown type of StreamElement");

@@ -139,6 +139,9 @@ public class JobMaster extends FencedRpcEndpoint<JobMasterId> implements JobMast
 
 	private final ResourceID resourceId;
 
+	/**
+	 * 作业执行图
+	 */
 	private final JobGraph jobGraph;
 
 	private final Time rpcTimeout;
@@ -159,8 +162,14 @@ public class JobMaster extends FencedRpcEndpoint<JobMasterId> implements JobMast
 
 	private final ClassLoader userCodeLoader;
 
+	/**
+	 * Slot管理
+	 */
 	private final SlotPool slotPool;
 
+	/**
+	 * Slot调度
+	 */
 	private final Scheduler scheduler;
 
 	private final SchedulerNGFactory schedulerNGFactory;
@@ -185,6 +194,9 @@ public class JobMaster extends FencedRpcEndpoint<JobMasterId> implements JobMast
 
 	private HeartbeatManager<Void, Void> resourceManagerHeartbeatManager;
 
+	/**
+	 * 任务调度
+	 */
 	private SchedulerNG schedulerNG;
 
 	@Nullable
@@ -888,12 +900,16 @@ public class JobMaster extends FencedRpcEndpoint<JobMasterId> implements JobMast
 		schedulerAssignedFuture.thenRun(this::startScheduling);
 	}
 
+	/**
+	 * 开始调度任务
+	 */
 	private void startScheduling() {
 		checkState(jobStatusListener == null);
 		// register self as job status change listener
 		jobStatusListener = new JobManagerJobStatusListener();
 		schedulerNG.registerJobStatusListener(jobStatusListener);
 
+		// 开启调度
 		schedulerNG.startScheduling();
 	}
 

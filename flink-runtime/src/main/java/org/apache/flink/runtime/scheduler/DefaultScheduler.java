@@ -186,9 +186,15 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 		}
 	}
 
+	/**
+	 * 处理失败任务.
+	 * @param executionVertexId id
+	 * @param error e
+	 */
 	private void handleTaskFailure(final ExecutionVertexID executionVertexId, @Nullable final Throwable error) {
 		setGlobalFailureCause(error);
 		notifyCoordinatorsAboutTaskFailure(executionVertexId, error);
+		// 分析是否可以进行恢复
 		final FailureHandlingResult failureHandlingResult = executionFailureHandler.getFailureHandlingResult(executionVertexId, error);
 		maybeRestartTasks(failureHandlingResult);
 	}
@@ -211,8 +217,10 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 
 	private void maybeRestartTasks(final FailureHandlingResult failureHandlingResult) {
 		if (failureHandlingResult.canRestart()) {
+			// 恢复Task
 			restartTasksWithDelay(failureHandlingResult);
 		} else {
+			// 不可恢复，直接定义为失败
 			failJob(failureHandlingResult.getError());
 		}
 	}
@@ -220,6 +228,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 	private void restartTasksWithDelay(final FailureHandlingResult failureHandlingResult) {
 		final Set<ExecutionVertexID> verticesToRestart = failureHandlingResult.getVerticesToRestart();
 
+		// 对于要重启的task，首先取消正在执行的任务
 		final Set<ExecutionVertexVersion> executionVertexVersions =
 			new HashSet<>(executionVertexVersioner.recordVertexModifications(verticesToRestart).values());
 		final boolean globalRecovery = failureHandlingResult.isGlobalFailure();
@@ -228,6 +237,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 
 		final CompletableFuture<?> cancelFuture = cancelTasksAsync(verticesToRestart);
 
+		// 取消成功后进行启动
 		delayExecutor.schedule(
 			() -> FutureUtils.assertNoException(
 				cancelFuture.thenRunAsync(restartTasks(executionVertexVersions, globalRecovery), getMainThreadExecutor())),
@@ -252,16 +262,16 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 			final Set<ExecutionVertexID> verticesToRestart = executionVertexVersioner.getUnmodifiedExecutionVertices(executionVertexVersions);
 
 			removeVerticesFromRestartPending(verticesToRestart);
-
+			// 重置graph中的状态
 			resetForNewExecutions(verticesToRestart);
-
+			// 从快照中恢复
 			try {
 				restoreState(verticesToRestart, isGlobalRecovery);
 			} catch (Throwable t) {
 				handleGlobalFailure(t);
 				return;
 			}
-
+			// 重启任务
 			schedulingStrategy.restartTasks(verticesToRestart);
 		};
 	}
@@ -294,6 +304,8 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 
 	@Override
 	public void allocateSlotsAndDeploy(final List<ExecutionVertexDeploymentOption> executionVertexDeploymentOptions) {
+
+		// 校验 执行节点是否为 CREATED 状态
 		validateDeploymentOptions(executionVertexDeploymentOptions);
 
 		final Map<ExecutionVertexID, ExecutionVertexDeploymentOption> deploymentOptionsByVertex =
@@ -379,6 +391,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 	}
 
 	private BiFunction<Void, Throwable, Void> deployAll(final List<DeploymentHandle> deploymentHandles) {
+
 		return (ignored, throwable) -> {
 			propagateIfNonNull(throwable);
 			for (final DeploymentHandle deploymentHandle : deploymentHandles) {
@@ -446,6 +459,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 	}
 
 	private BiFunction<Object, Throwable, Void> deployOrHandleError(final DeploymentHandle deploymentHandle) {
+		// 获得启动执行的 vertex Id
 		final ExecutionVertexVersion requiredVertexVersion = deploymentHandle.getRequiredVertexVersion();
 		final ExecutionVertexID executionVertexId = requiredVertexVersion.getExecutionVertexId();
 
@@ -457,6 +471,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 			}
 
 			if (throwable == null) {
+				// 安全执行
 				deployTaskSafe(executionVertexId);
 			} else {
 				handleTaskDeploymentFailure(executionVertexId, throwable);

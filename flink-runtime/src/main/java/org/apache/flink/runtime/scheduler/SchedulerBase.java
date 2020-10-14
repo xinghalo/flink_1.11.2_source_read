@@ -795,8 +795,9 @@ public abstract class SchedulerBase implements SchedulerNG {
 	@Override
 	public void acknowledgeCheckpoint(final JobID jobID, final ExecutionAttemptID executionAttemptID, final long checkpointId, final CheckpointMetrics checkpointMetrics, final TaskStateSnapshot checkpointState) {
 		mainThreadExecutor.assertRunningInMainThread();
-
+		// 获取 检查点 调度器
 		final CheckpointCoordinator checkpointCoordinator = executionGraph.getCheckpointCoordinator();
+		// 新建ack消息
 		final AcknowledgeCheckpoint ackMessage = new AcknowledgeCheckpoint(
 			jobID,
 			executionAttemptID,
@@ -807,6 +808,7 @@ public abstract class SchedulerBase implements SchedulerNG {
 		final String taskManagerLocationInfo = retrieveTaskManagerLocation(executionAttemptID);
 
 		if (checkpointCoordinator != null) {
+			// 基于新的线程池，异步接收消息
 			ioExecutor.execute(() -> {
 				try {
 					checkpointCoordinator.receiveAcknowledgeMessage(ackMessage, taskManagerLocationInfo);

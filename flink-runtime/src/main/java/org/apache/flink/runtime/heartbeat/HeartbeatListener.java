@@ -37,6 +37,7 @@ public interface HeartbeatListener<I, O> {
 	/**
 	 * Callback which is called if a heartbeat for the machine identified by the given resource
 	 * ID times out.
+	 * 心跳超时
 	 *
 	 * @param resourceID Resource ID of the machine whose heartbeat has timed out
 	 */
@@ -45,6 +46,7 @@ public interface HeartbeatListener<I, O> {
 	/**
 	 * Callback which is called whenever a heartbeat with an associated payload is received. The
 	 * carried payload is given to this method.
+	 * 接收payload
 	 *
 	 * @param resourceID Resource ID identifying the sender of the payload
 	 * @param payload Payload of the received heartbeat
@@ -53,6 +55,7 @@ public interface HeartbeatListener<I, O> {
 
 	/**
 	 * Retrieves the payload value for the next heartbeat message.
+	 * 查询payload
 	 *
 	 * @param resourceID Resource ID identifying the receiver of the payload
 	 * @return The payload for the next heartbeat

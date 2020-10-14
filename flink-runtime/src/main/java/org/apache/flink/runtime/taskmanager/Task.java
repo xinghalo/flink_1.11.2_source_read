@@ -552,6 +552,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 	private void doRun() {
 		// ----------------------------
 		//  Initial State transition
+		//  处理Task状态变化
 		// ----------------------------
 		while (true) {
 			ExecutionState current = this.executionState;
@@ -606,6 +607,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 			// this may involve downloading the job's JAR files and/or classes
 			LOG.info("Loading JAR files for task {}.", this);
 
+			// 用户自定义类加载
 			userCodeClassLoader = createUserCodeClassloader();
 			final ExecutionConfig executionConfig = serializedExecutionConfig.deserializeValue(userCodeClassLoader);
 
@@ -632,6 +634,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 
 			LOG.info("Registering task at network: {}.", this);
 
+			// 完成与上游Task之间的数据关联
 			setupPartitionsAndGates(consumableNotifyingPartitionWriters, inputGates);
 
 			for (ResultPartitionWriter partitionWriter : consumableNotifyingPartitionWriters) {
@@ -660,6 +663,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 			//  call the user code initialization methods
 			// ----------------------------------------------------------------
 
+			// 初始化用户代码
 			TaskKvStateRegistry kvStateRegistry = kvStateService.createKvStateTaskRegistry(jobId, getJobVertexId());
 
 			Environment env = new RuntimeEnvironment(
@@ -707,6 +711,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 			this.invokable = invokable;
 
 			// switch to the RUNNING state, if that fails, we have been canceled/failed in the meantime
+			// 切换到RUNNING状态
 			if (!transitionState(ExecutionState.DEPLOYING, ExecutionState.RUNNING)) {
 				throw new CancelTaskException();
 			}
@@ -715,9 +720,11 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 			taskManagerActions.updateTaskExecutionState(new TaskExecutionState(jobId, executionId, ExecutionState.RUNNING));
 
 			// make sure the user code classloader is accessible thread-locally
+			// 配置当前的类加载器
 			executingThread.setContextClassLoader(userCodeClassLoader);
 
 			// run the invokable
+			// 启动业务逻辑 <-------- 业务代码入口
 			invokable.invoke();
 
 			// make sure, we enter the catch block if the task leaves the invoke() method due
@@ -731,6 +738,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 			// ----------------------------------------------------------------
 
 			// finish the produced partitions. if this fails, we consider the execution failed.
+			// 统一把推送给下游的数据进行flush，如果失败，则任务当做失败
 			for (ResultPartitionWriter partitionWriter : consumableNotifyingPartitionWriters) {
 				if (partitionWriter != null) {
 					partitionWriter.finish();
@@ -739,12 +747,13 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 
 			// try to mark the task as finished
 			// if that fails, the task was canceled/failed in the meantime
+			// 任务执行完毕，状态迁移到FINISHED
 			if (!transitionState(ExecutionState.RUNNING, ExecutionState.FINISHED)) {
 				throw new CancelTaskException();
 			}
 		}
 		catch (Throwable t) {
-
+			// 异常处理，切换到Failed状态
 			// unwrap wrapped exceptions to make stack traces more compact
 			if (t instanceof WrappingRuntimeException) {
 				t = ((WrappingRuntimeException) t).unwrap();
@@ -826,6 +835,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 				this.invokable = null;
 
 				// free the network resources
+				// 释放内存、占用的Cache等
 				releaseResources();
 
 				// free memory resources
@@ -865,12 +875,14 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 	public static void setupPartitionsAndGates(
 		ResultPartitionWriter[] producedPartitions, InputGate[] inputGates) throws IOException {
 
+		// 初始化结果分区
 		for (ResultPartitionWriter partition : producedPartitions) {
 			partition.setup();
 		}
 
 		// InputGates must be initialized after the partitions, since during InputGate#setup
 		// we are requesting partitions
+		// 初始化InputGate
 		for (InputGate gate : inputGates) {
 			gate.setup();
 		}
@@ -1144,6 +1156,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 
 	/**
 	 * Calls the invokable to trigger a checkpoint.
+	 * 调用检查点
 	 *
 	 * @param checkpointID The ID identifying the checkpoint.
 	 * @param checkpointTimestamp The timestamp associated with the checkpoint.
@@ -1350,16 +1363,16 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 		String className,
 		Environment environment) throws Throwable {
 
+		// 通过类名进行类加载
 		final Class<? extends AbstractInvokable> invokableClass;
 		try {
-			invokableClass = Class.forName(className, true, classLoader)
-				.asSubclass(AbstractInvokable.class);
+			invokableClass = Class.forName(className, true, classLoader).asSubclass(AbstractInvokable.class);
 		} catch (Throwable t) {
 			throw new Exception("Could not load the task's invokable class.", t);
 		}
 
+		// 获取构造方法
 		Constructor<? extends AbstractInvokable> statelessCtor;
-
 		try {
 			statelessCtor = invokableClass.getConstructor(Environment.class);
 		} catch (NoSuchMethodException ee) {
@@ -1367,6 +1380,7 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 		}
 
 		// instantiate the class
+		// 实例化
 		try {
 			//noinspection ConstantConditions  --> cannot happen
 			return statelessCtor.newInstance(environment);

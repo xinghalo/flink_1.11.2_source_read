@@ -32,8 +32,11 @@ public interface RecordSerializer<T extends IOReadableWritable> {
 	 * Status of the serialization result.
 	 */
 	enum SerializationResult {
+		// 内存段已满，数据没写完
 		PARTIAL_RECORD_MEMORY_SEGMENT_FULL(false, true),
+		// 内存段已满，数据已写完
 		FULL_RECORD_MEMORY_SEGMENT_FULL(true, true),
+		// 内存段未满，数据已写完
 		FULL_RECORD(true, false);
 
 		private final boolean isFullRecord;

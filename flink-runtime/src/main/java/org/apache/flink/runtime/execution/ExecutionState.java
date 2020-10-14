@@ -49,12 +49,13 @@ package org.apache.flink.runtime.execution;
  */
 public enum ExecutionState {
 
+	// 创建出来就是这个
 	CREATED,
-	
+	// 申请计算资源
 	SCHEDULED,
-	
+	// 资源申请完毕，正在部署
 	DEPLOYING,
-	
+	// 运行
 	RUNNING,
 
 	/**
